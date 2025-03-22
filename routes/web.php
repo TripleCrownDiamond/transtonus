@@ -1,10 +1,16 @@
 <?php
 
+// routes/web.php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\QuoteRequestController;
+use App\Http\Controllers\AdminShipmentController;
+use App\Http\Controllers\ConfigController;
+use App\Services\StatsService;
 
 // Redirection vers la locale par défaut (fr)
 Route::get('/', function () {
@@ -13,45 +19,51 @@ Route::get('/', function () {
 
 // Routes avec préfixe de locale
 Route::prefix('{locale}')
-    ->where(['locale' => 'fr|en|es']) // Ajoutez 'es' ici
-    ->middleware('setlocale') // Appliquer le middleware SetLocale
+    ->where(['locale' => 'fr|en|es'])
+    ->middleware(['setlocale', 'track.visitors'])
     ->group(function () {
-
-        // Page d'accueil
         Route::get('/', function () {
             return view('guest.welcome');
         })->name('home');
 
-        // Page des services
         Route::get('/services', [ServiceController::class, 'allServices'])->name('services');
-
-        // Page de contact
         Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
-
-        // Page de demande de devis
         Route::get('/quote', [ContactController::class, 'showQuoteForm'])->name('quote');
-
-        // Page des conditions d'utilisation
         Route::get('/terms', function () {
             return view('guest.terms');
         })->name('terms');
-
-        // Page de politique de confidentialité
         Route::get('/privacy', function () {
             return view('guest.privacy');
         })->name('privacy');
-
-        // Suivi de colis
         Route::get('/track/{shipment}', [ShipmentController::class, 'track'])->name('shipment.track');
     });
 
-
+// Routes authentifiées
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/dashboard', function (StatsService $statsService) {
+        return view('dashboard', [
+            'visitorStats' => $statsService->getVisitorStats(),
+            'quoteStats' => $statsService->getQuoteStats(),
+            'shipmentStats' => $statsService->getShipmentStats(),
+            'contactStats' => $statsService->getContactStats(),
+        ]);
     })->name('dashboard');
+
+    // Routes administratives sous /dashboard
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/configs', [ConfigController::class, 'index'])->name('configs');
+        Route::get('/languages', [LanguageController::class, 'index'])->name('languages');
+        Route::post('/languages', [LanguageController::class, 'store'])->name('languages.store');
+        Route::delete('/languages/{language}', [LanguageController::class, 'destroy'])->name('languages.destroy');
+        Route::get('/quote-request', [QuoteRequestController::class, 'index'])->name('quote-request');
+        Route::get('/quote-request/{quoteRequest}', [QuoteRequestController::class, 'show'])->name('quote-request.show');
+        Route::delete('/quote-request/{quoteRequest}', [QuoteRequestController::class, 'destroy'])->name('quote-request.destroy');
+        Route::get('/all-shipments', [AdminShipmentController::class, 'index'])->name('all-shipments');
+        Route::get('/all-shipments/{shipment}', [AdminShipmentController::class, 'show'])->name('all-shipments.show');
+        Route::delete('/all-shipments/{shipment}', [AdminShipmentController::class, 'destroy'])->name('all-shipments.destroy');
+    });
 });
