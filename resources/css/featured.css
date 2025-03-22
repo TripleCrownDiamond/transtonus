@@ -1,0 +1,129 @@
+/*--------------------------------------------------------------
+# Featured Services Section
+--------------------------------------------------------------*/
+.featured-services {
+    padding: 60px 0;
+    background-color: var(--surface-color);
+}
+
+.featured-services .service-item {
+    position: relative;
+    height: 100%;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: fadeInUp 0.8s ease-in-out; /* Animation pour les cartes */
+    animation-fill-mode: both;
+}
+
+.featured-services .service-item:hover {
+    transform: translateY(-10px); /* Effet de levée au survol */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Ombre au survol */
+}
+
+/* Délais d'animation pour chaque carte */
+.featured-services .service-item[data-aos-delay="100"] {
+    animation-delay: 0.1s;
+}
+
+.featured-services .service-item[data-aos-delay="200"] {
+    animation-delay: 0.2s;
+}
+
+.featured-services .service-item[data-aos-delay="300"] {
+    animation-delay: 0.3s;
+}
+
+/* Conteneur des icônes */
+.featured-services .service-item .icon {
+    margin-right: 20px;
+}
+
+.featured-services .service-item .icon-container {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color); /* Couleur de fond */
+    border-radius: 12px; /* Carré arrondi (ou 50% pour un cercle) */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.featured-services .service-item:hover .icon-container {
+    background-color: var(--heading-color); /* Couleur de fond au survol */
+    transform: rotate(15deg); /* Rotation au survol */
+}
+
+/* Icônes à l'intérieur du conteneur */
+.featured-services .service-item .icon-container i {
+    color: var(--contrast-color); /* Couleur des icônes */
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.featured-services .service-item:hover .icon-container i {
+    color: var(--contrast-color); /* Couleur des icônes au survol */
+    transform: scale(1.2); /* Zoom au survol */
+}
+
+/* Titres */
+.featured-services .service-item .title {
+    color: var(--heading-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+/* Description */
+.featured-services .service-item .description {
+    font-size: 15px;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Lien "Demander un Devis" */
+.featured-services .service-item .readmore {
+    display: flex;
+    align-items: center;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.featured-services .service-item .readmore i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.featured-services .service-item:hover .readmore {
+    color: var(--accent-color); /* Couleur au survol */
+    transform: translateX(10px); /* Décalage au survol */
+}
+
+.featured-services .service-item:hover .readmore i {
+    transform: translateX(5px); /* Décalage de l'icône au survol */
+}
+
+/* Effet au survol pour les titres et liens */
+.featured-services .service-item:hover .title,
+.featured-services .service-item:hover .readmore {
+    color: var(--accent-color); /* Couleur au survol */
+}
+
+/* Keyframes pour les animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,138 @@
+@import "bootstrap";
+
+:root {
+    --primary: #ed751c;
+    --secondary: #022135;
+    --primary-rgb: 237, 117, 28;
+    --secondary-rgb: 2, 33, 53;
+}
+
+/* Override Bootstrap's primary and secondary colors */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #d66a19;
+    border-color: #d66a19;
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-color: #011a29;
+    border-color: #011a29;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+/* Landing Page Styles */
+:root {
+  --default-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Inter", sans-serif;
+  --nav-font: "Montserrat", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #022135; /* Color for headings, subheadings and title throughout the website - changed to your secondary brand color */
+  --accent-color: #ed751c; /* Accent color that represents your brand on the website - changed to your primary brand color */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu */
+:root {
+  --nav-color: rgba(2, 33, 53, 0.8);  /* The default color of the main navmenu links - based on your secondary color */
+  --nav-hover-color: #022135; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items */
+  --nav-dropdown-color: #022135; /* Used for navigation links of the dropdown items */
+  --nav-dropdown-hover-color: #ed751c; /* Color applied to dropdown navigation links when hovered */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element */
+.light-background {
+  --background-color: #f7f9fc;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #022135; /* Changed to your secondary color */
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #033152; /* Slightly lighter version of your secondary color */
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/* Pulsating Play Button
+------------------------------*/
+.pulsating-play-btn {
+  width: 94px;
+  height: 94px;
+  background: radial-gradient(var(--accent-color) 50%, color-mix(in srgb, var(--accent-color), transparent 75%) 52%);
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+

@@ -1,0 +1,127 @@
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--background-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 160px 0 80px 0; /* Padding par défaut */
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Pour contenir les animations */
+  animation: zoomBackground 10s ease-in-out infinite; /* Animation de zoom */
+  margin-top: 0; /* Supprime toute marge en haut */
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+  .page-title {
+    padding-top: 80px; /* Augmente le padding en haut pour mobile */
+    animation: none; /* Désactive l'animation de zoom */
+  }
+
+  .page-title h1 {
+    font-size: 32px; /* Réduit la taille du titre sur mobile */
+    animation: none; /* Désactive l'animation du titre */
+  }
+
+  .page-title p {
+    animation: none; /* Désactive l'animation de la description */
+  }
+
+  .page-title .breadcrumbs ol {
+    animation: none; /* Désactive l'animation du fil d'Ariane */
+  }
+}
+
+@keyframes zoomBackground {
+  0% {
+      background-size: 100%;
+  }
+  50% {
+      background-size: 110%;
+  }
+  100% {
+      background-size: 100%;
+  }
+}
+
+.page-title h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+  animation: fadeInUp 1s ease-out; /* Animation pour le titre */
+}
+
+.page-title p {
+  position: relative;
+  animation: fadeInUp 1.2s ease-out; /* Animation pour la description */
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  animation: fadeInUp 1.4s ease-out; /* Animation pour le fil d'Ariane */
+}
+
+.page-title .breadcrumbs ol a {
+  color: color-mix(in srgb, var(--background-color), transparent 50%);
+}
+
+.page-title .breadcrumbs ol a:hover {
+  color: var(--contrast-color);
+}
+
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--background-color), transparent 50%);
+}
+
+/* Keyframes pour les animations */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Styles pour la navbar */
+.header {
+  position: fixed; /* Fixez la navbar en haut */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Assurez-vous que la navbar est au-dessus du .page-title */
+  background: transparent; /* Fond transparent pour laisser voir le .page-title */
+  padding: 10px 0; /* Ajustez le padding pour mobile */
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+  .header {
+    background: var(--background-color); /* Fond solide pour la navbar sur mobile */
+  }
+
+  .page-title {
+    padding-top: 130px; /* Ajustez ce padding pour compenser la hauteur de la navbar */
+  }
+}

@@ -1,0 +1,462 @@
+/*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq {
+    padding: 60px 0;
+    background-color: var(--surface-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation d'arrière-plan subtile */
+.faq::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at right top, 
+                              color-mix(in srgb, var(--accent-color), transparent 90%), 
+                              transparent 70%);
+    opacity: 0.4;
+    animation: pulseBg 15s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes pulseBg {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0.3; }
+}
+
+.faq .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.faq .section-title span {
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    animation: slideInDown 0.8s ease-out;
+    position: relative;
+}
+
+/* Animation pour le sous-titre */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation pour la ligne de soulignement */
+.faq .section-title span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    animation: expandLine 1.2s ease-out forwards 0.3s;
+}
+
+@keyframes expandLine {
+    to {
+        width: 50px;
+        left: calc(50% - 25px);
+    }
+}
+
+.faq .section-title h2 {
+    color: var(--heading-color);
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    animation: fadeIn 1s ease-out 0.3s both;
+    position: relative;
+}
+
+/* Animation de mise en évidence pour le titre */
+.faq .section-title h2::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    left: 0;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: highlightText 1.5s ease-out forwards 0.6s;
+}
+
+@keyframes highlightText {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.faq .section-title p {
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+    font-size: 16px;
+    margin-bottom: 0;
+    animation: fadeInUp 1s ease-out 0.5s both;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq .faq-container {
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.faq .faq-container .faq-item {
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 8px; /* Bordures arrondies */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transform-origin: center;
+}
+
+/* Animation d'effet de vague au survol */
+.faq .faq-container .faq-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+                               color-mix(in srgb, var(--accent-color), transparent 85%), 
+                               transparent 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    z-index: 0;
+}
+
+.faq .faq-container .faq-item:hover::before {
+    transform: scale(2.5);
+    opacity: 0.1;
+}
+
+.faq .faq-container .faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.faq .faq-container .faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq .faq-container .faq-item h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 30px 0 32px;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.faq .faq-container .faq-item h3:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.faq .faq-container .faq-item .faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    visibility: hidden;
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.faq .faq-container .faq-item .faq-content p {
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+    transform: translateY(10px);
+}
+
+.faq .faq-container .faq-item .faq-icon {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    font-size: 20px;
+    line-height: 0;
+    transition: all 0.4s ease;
+    color: var(--accent-color);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+/* Animation de pulse pour l'icône */
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.faq .faq-container .faq-item:hover .faq-icon {
+    animation: iconPulse 1.5s infinite;
+}
+
+.faq .faq-container .faq-item .faq-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    line-height: 0;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.faq .faq-container .faq-item .faq-toggle:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.faq .faq-container .faq-active {
+    background-color: var(--heading-color);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1.02);
+}
+
+/* Animation d'entrée pour les éléments actifs */
+@keyframes activeItemGlow {
+    0% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color), transparent 80%);
+    }
+    70% {
+        box-shadow: 0 0 10px 5px color-mix(in srgb, var(--accent-color), transparent 80%);
+    }
+    100% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color), transparent 80%);
+    }
+}
+
+.faq .faq-container .faq-active {
+    animation: activeItemGlow 1.5s ease-out;
+}
+
+.faq .faq-container .faq-active h3,
+.faq .faq-container .faq-active h3:hover,
+.faq .faq-container .faq-active .faq-toggle,
+.faq .faq-container .faq-active .faq-icon,
+.faq .faq-container .faq-active .faq-content {
+    color: var(--contrast-color);
+}
+
+.faq .faq-container .faq-active .faq-content {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    opacity: 1;
+    padding-top: 10px;
+    transition-delay: 0.1s;
+}
+
+.faq .faq-container .faq-active .faq-content p {
+    transform: translateY(0);
+    animation: contentFadeIn 0.5s ease-out;
+}
+
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq .faq-container .faq-active .faq-toggle {
+    transform: rotate(90deg);
+    animation: rotateToggle 0.4s ease-out;
+}
+
+@keyframes rotateToggle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+
+/* Animation pour les questions */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.faq .faq-container .faq-item {
+    animation: fadeInUp 0.6s ease-in-out;
+    animation-fill-mode: both;
+    opacity: 0;
+}
+
+/* Animation d'entrée staggered pour les éléments */
+.faq .faq-container .faq-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.faq .faq-container .faq-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.faq .faq-container .faq-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.faq .faq-container .faq-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.faq .faq-container .faq-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.faq .faq-container .faq-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.faq .faq-container .faq-item:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.faq .faq-container .faq-item:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+/* Animation au défilement (compatible avec AOS) */
+.faq .faq-container .faq-item[data-aos-delay="200"] {
+    animation-delay: 0.2s;
+}
+
+.faq .faq-container .faq-item[data-aos-delay="300"] {
+    animation-delay: 0.3s;
+}
+
+.faq .faq-container .faq-item[data-aos-delay="400"] {
+    animation-delay: 0.4s;
+}
+
+.faq .faq-container .faq-item[data-aos-delay="500"] {
+    animation-delay: 0.5s;
+}
+
+.faq .faq-container .faq-item[data-aos-delay="600"] {
+    animation-delay: 0.6s;
+}
+
+/* Animation pour le bouton retour en haut dans la section FAQ */
+.back-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.back-to-top.active {
+    visibility: visible;
+    opacity: 1;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Animation pour les éléments interactifs */
+.faq .interactive-element {
+    position: relative;
+    overflow: hidden;
+}
+
+.faq .interactive-element::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.faq .interactive-element:hover::after {
+    left: 100%;
+    animation: shine 1.5s;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Mode sombre / lumineux animation de transition */
+@media (prefers-color-scheme: dark) {
+    .faq {
+        transition: background-color 0.5s ease;
+    }
+}

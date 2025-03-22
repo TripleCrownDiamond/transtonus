@@ -1,0 +1,222 @@
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 50vh;
+  position: relative;
+  padding: 120px 0 60px 0;
+  background-color: var(--heading-color); /* Fond en couleur foncée (#001973) */
+  color: #ffffff; /* Texte en blanc */
+  overflow: hidden; /* Cache les débordements pour les animations */
+}
+
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  animation: zoomIn 10s ease-in-out infinite alternate; /* Animation de zoom pour l'arrière-plan */
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero h2 {
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff; /* Titre en blanc */
+  animation: fadeInUp 1s ease-in-out; /* Animation pour le titre */
+}
+
+@media (max-width: 575px) {
+  .hero h2 {
+      font-size: 30px;
+  }
+}
+
+.hero p {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: #ffffff; /* Texte en blanc */
+  animation: fadeInUp 1s ease-in-out 0.2s; /* Animation avec délai pour le paragraphe */
+  animation-fill-mode: both;
+}
+
+.hero form {
+  background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent pour le formulaire */
+  padding: 10px;
+  border-radius: 10px;
+  animation: fadeInUp 1s ease-in-out 0.4s; /* Animation avec délai pour le formulaire */
+  animation-fill-mode: both;
+}
+
+.hero form .form-control {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  margin-right: 10px;
+  border: none !important;
+  background: none !important;
+  color: #ffffff; /* Texte en blanc dans les champs de formulaire */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Placeholder en blanc semi-transparent */
+}
+
+.hero form .form-control:hover,
+.hero form .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.2); /* Fond légèrement plus clair au survol */
+  transform: scale(1.02); /* Légère augmentation de la taille */
+}
+
+.hero form .btn-primary {
+  color: var(--contrast-color); /* Texte en couleur de contraste */
+  background-color: var(--accent-color); /* Fond en couleur d'accent */
+  flex-shrink: 0;
+  padding: 0 25px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: pulse 2s infinite; /* Animation de pulsation pour le bouton */
+}
+
+.hero form .btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+  transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+.hero .stats-item {
+  padding: 30px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent pour les stats */
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-in-out 0.6s; /* Animation avec délai pour les stats */
+  animation-fill-mode: both;
+}
+
+.hero .stats-item span {
+  font-size: 32px;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  position: relative;
+  color: #ffffff; /* Texte en blanc */
+}
+
+.hero .stats-item span:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 3px;
+  background: var(--accent-color); /* Ligne en couleur d'accent */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.hero .stats-item p {
+  padding: 0;
+  margin: 0;
+  font-family: var(--heading-font); /* Police de caractères pour les titres */
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff; /* Texte en blanc */
+}
+
+/* Animation pour l'image */
+.hero-img img {
+  max-width: 140%; /* Augmente légèrement la taille */
+  height: auto; /* Conserve le ratio de l'image */
+  animation: float 4s ease-in-out infinite; /* Animation de flottement pour l'image */
+}
+
+/* Centrer .hero-img sur mobile */
+@media (max-width: 767px) {
+  .hero-img {
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      margin-top: 20px; /* Ajoute un espace au-dessus de l'image */
+  }
+
+  .hero-img img {
+      max-width: 100%; /* Réduit la taille de l'image pour s'adapter à l'écran */
+      height: auto;
+  }
+}
+
+/* Keyframes pour les animations */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+/* Nouvelle animation pour les stats au survol */
+.hero .stats-item:hover {
+  transform: translateY(-5px); /* Légère levée au survol */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Nouvelle animation pour les icônes dans les stats */
+.hero .stats-item span:after {
+  transition: width 0.3s ease;
+}
+
+.hero .stats-item:hover span:after {
+  width: 40px; /* Ligne plus large au survol */
+}

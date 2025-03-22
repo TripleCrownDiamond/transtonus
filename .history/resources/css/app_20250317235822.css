@@ -1,0 +1,119 @@
+@import "bootstrap";
+
+:root {
+    --primary: #ed751c;
+    --secondary: #022135;
+    --primary-rgb: 237, 117, 28;
+    --secondary-rgb: 2, 33, 53;
+}
+
+/* Override Bootstrap's primary and secondary colors */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #d66a19;
+    border-color: #d66a19;
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-color: #011a29;
+    border-color: #011a29;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+/* Navbar Styles - Reset to white background */
+.navbar {
+    background-color: white;
+    transition: all 0.3s ease;
+    padding: 15px 0;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: var(--secondary);
+}
+
+.navbar-scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* Logo sizing */
+.navbar-brand img {
+    width: 300px;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.navbar-scrolled .navbar-brand img {
+    width: 250px;
+}
+
+/* Button in navbar */
+.navbar .btn-brand {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white !important;
+    padding: px 40px;
+    border-radius: 0;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.navbar .btn-brand:hover {
+    background-color: #d66a19;
+    border-color: #d66a19;
+}
+
+.navbar .btn-brand i {
+    transition: transform 0.3s ease;
+}
+
+.navbar .btn-brand:hover i {
+    transform: translateX(3px);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: 100px;
+    background: linear-gradient(45deg, var(--secondary), #033152);
+}

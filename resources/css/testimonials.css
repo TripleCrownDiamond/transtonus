@@ -1,0 +1,269 @@
+/*-------------------------------------------------------------- 
+# Testimonials Section 
+--------------------------------------------------------------*/
+.testimonials {
+  padding: 80px 0;
+  position: relative;
+  background-color: var(--background-color); /* Couleur de fond */
+  overflow: hidden; /* Pour éviter les débordements des animations */
+}
+.testimonials:before {
+  content: "";
+  background: color-mix(in srgb, var(--heading-color), transparent 30%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  animation: pulseOverlay 8s infinite alternate;
+}
+@keyframes pulseOverlay {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+.testimonials .testimonials-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  animation: slowZoom 30s infinite alternate;
+}
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+.testimonials .container {
+  position: relative;
+  z-index: 3;
+}
+.testimonials .testimonials-carousel, .testimonials .testimonials-slider {
+  overflow: hidden;
+}
+.testimonials .testimonial-item {
+  text-align: center;
+  padding: 20px;
+  background: transparent; /* Changed from semi-transparent to transparent */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonials .testimonial-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.testimonials .testimonial-item .testimonial-img {
+  width: 100px;
+  border-radius: 50%;
+  border: 6px solid color-mix(in srgb, var(--background-color), transparent 85%);
+  margin: 0 auto;
+  transition: transform 0.5s ease;
+  animation: floatImage 6s ease-in-out infinite;
+}
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.testimonials .testimonial-item:hover .testimonial-img {
+  transform: scale(1.1) rotate(5deg);
+  border-color: color-mix(in srgb, var(--accent-color, #4db5ff), transparent 30%);
+}
+.testimonials .testimonial-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  color: white; /* Changed to white */
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease forwards 0.3s;
+}
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  color: rgba(255, 255, 255, 0.8); /* Changed to semi-transparent white */
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease forwards 0.5s;
+}
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.testimonials .testimonial-item .stars {
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: sparkle 1s ease forwards 0.7s;
+}
+@keyframes sparkle {
+  0% { 
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.testimonials .testimonial-item .stars i {
+  color: #ffc107;
+  margin: 0 1px;
+  animation: twinkle 2s infinite alternate;
+}
+.testimonials .testimonial-item .stars i:nth-child(2n) {
+  animation-delay: 0.5s;
+}
+.testimonials .testimonial-item .stars i:nth-child(3n) {
+  animation-delay: 1s;
+}
+@keyframes twinkle {
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+.testimonials .testimonial-item .quote-icon-left, .testimonials .testimonial-item .quote-icon-right {
+  color: rgba(255, 255, 255, 0.6); /* Changed to semi-transparent white */
+  font-size: 26px;
+  line-height: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.testimonials .testimonial-item:hover .quote-icon-left,
+.testimonials .testimonial-item:hover .quote-icon-right {
+  color: rgba(255, 255, 255, 0.9);
+}
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+  animation: quoteSlideRight 1s ease forwards 0.2s;
+  opacity: 0;
+}
+@keyframes quoteSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+  animation: quoteSlideLeft 1s ease forwards 0.2s;
+  opacity: 0;
+}
+@keyframes quoteSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(-1, -1);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(-1, -1);
+  }
+}
+.testimonials .testimonial-item .testimonial-text {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+  color: white; /* Changed to white */
+  background-color: transparent; /* Removed white background */
+  padding: 15px;
+  border-radius: 8px;
+  position: relative;
+  opacity: 0;
+  animation: revealText 1s ease forwards 0.8s;
+  transition: transform 0.3s ease;
+}
+@keyframes revealText {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.testimonials .testimonial-item:hover .testimonial-text {
+  transform: scale(1.02);
+}
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5); /* Changed to semi-transparent white */
+  opacity: 0.5;
+  transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+.testimonials .swiper-pagination .swiper-pagination-bullet:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: white; /* Changed to white */
+  opacity: 1;
+  animation: pulseActive 2s infinite;
+}
+@keyframes pulseActive {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+/* Animation d'entrée pour les témoignages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animation pour chaque testimonial lors du slide */
+.swiper-slide-active .testimonial-item {
+  animation: scaleIn 0.5s ease forwards;
+}
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.swiper-slide-prev .testimonial-item,
+.swiper-slide-next .testimonial-item {
+  opacity: 0.7;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+/* Responsive adjustments with animations */
+@media (min-width: 992px) {
+  .testimonials .testimonial-item p {
+    width: 80%;
+    animation: expandWidth 1s ease forwards;
+  }
+  @keyframes expandWidth {
+    from { width: 60%; }
+    to { width: 80%; }
+  }
+}
+/* Animation pour l'apparition séquentielle des témoignages */
+.testimonials .testimonial-item:nth-child(1) { animation-delay: 0.1s; }
+.testimonials .testimonial-item:nth-child(2) { animation-delay: 0.3s; }
+.testimonials .testimonial-item:nth-child(3) { animation-delay: 0.5s; }
+.testimonials .testimonial-item:nth-child(4) { animation-delay: 0.7s; }

@@ -1,0 +1,166 @@
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact {
+  margin-top: 60px; /* Marge en haut */
+  margin-bottom: 60px; /* Marge en bas */
+}
+
+.contact .info-item + .info-item {
+  margin-top: 40px;
+}
+
+/* Conteneur des icônes */
+.contact .info-item .icon-container {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color); /* Couleur de fond */
+  border-radius: 12px; /* Carré arrondi */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-right: 20px; /* Espacement à droite */
+}
+
+.contact .info-item:hover .icon-container {
+  background-color: var(--heading-color); /* Couleur de fond au survol */
+  transform: rotate(15deg); /* Rotation au survol */
+}
+
+/* Icônes à l'intérieur du conteneur */
+.contact .info-item .icon-container i {
+  color: var(--contrast-color); /* Couleur des icônes */
+  font-size: 24px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact .info-item:hover .icon-container i {
+  color: var(--contrast-color); /* Couleur des icônes au survol */
+  transform: scale(1.2); /* Zoom au survol */
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.contact .php-email-form {
+  height: 100%;
+}
+
+/* Style pour tous les inputs, textarea et select */
+.contact .php-email-form input[type="text"],
+.contact .php-email-form input[type="email"],
+.contact .php-email-form input[type="tel"],
+.contact .php-email-form textarea,
+.contact form input[type="text"],
+.contact form input[type="email"],
+.contact form input[type="tel"],
+.contact form textarea,
+.contact form select {
+  font-size: 14px !important;
+  padding: 10px 15px !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: var(--default-color) !important;
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%) !important;
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%) !important;
+  appearance: none; /* Supprime l'apparence par défaut du navigateur */
+  -webkit-appearance: none; /* Pour les navigateurs WebKit */
+  -moz-appearance: none; /* Pour les navigateurs Mozilla */
+}
+
+/* Focus states pour les inputs, textarea et select */
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="email"]:focus,
+.contact .php-email-form input[type="tel"]:focus,
+.contact .php-email-form textarea:focus,
+.contact form input[type="text"]:focus,
+.contact form input[type="email"]:focus,
+.contact form input[type="tel"]:focus,
+.contact form textarea:focus,
+.contact form select:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--accent-color-rgb), 0.25) !important;
+  outline: none !important;
+}
+
+/* Style pour les options du select */
+.contact form select option {
+  background-color: var(--background-color); /* Fond des options */
+  color: var(--default-color); /* Couleur du texte des options */
+  padding: 10px; /* Espacement interne */
+}
+
+/* Style pour les options au survol */
+.contact form select option:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 70%) !important; /* Couleur d'accent légère au survol */
+  color: var(--default-color) !important; /* Couleur du texte au survol */
+}
+
+/* Style pour l'option sélectionnée */
+.contact form select option:checked {
+  background-color: var(--accent-color) !important; /* Couleur d'accent pour l'option sélectionnée */
+  color: var(--contrast-color) !important; /* Couleur du texte pour l'option sélectionnée */
+}
+
+/* Button styles with higher specificity - no animation or bounce */
+.contact .php-email-form button[type="submit"],
+.contact form button[type="submit"],
+.contact .php-email-form .btn-primary,
+.contact form .btn-primary,
+.contact .btn-primary {
+  color: var(--contrast-color) !important;
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  border: 0 !important;
+  padding: 10px 30px !important;
+  border-radius: 4px !important;
+  text-align: left !important;
+  width: auto !important;
+  display: inline-block !important;
+  
+  /* Disable all animations and transitions */
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Override any hover or active animations */
+.contact .php-email-form button[type="submit"]:hover,
+.contact form button[type="submit"]:hover,
+.contact .php-email-form .btn-primary:hover,
+.contact form .btn-primary:hover,
+.contact .btn-primary:hover,
+.contact .php-email-form .btn-primary:focus,
+.contact form .btn-primary:focus,
+.contact .btn-primary:focus,
+.contact .php-email-form .btn-primary:active,
+.contact form .btn-primary:active,
+.contact .btn-primary:active {
+  background-color: color-mix(in srgb, var(--accent-color), black 10%) !important;
+  border-color: color-mix(in srgb, var(--accent-color), black 10%) !important;
+  
+  /* Disable all possible animations that could cause bouncing */
+  animation: none !important;
+  transform: none !important;
+  transition: background-color 0.3s ease !important;
+}
+
+/* Additional catch-all for any animations */
+.btn,
+.btn-primary,
+button[type="submit"] {
+  animation: none !important;
+  transition: background-color 0.3s ease !important;
+  transform: none !important;
+}

@@ -1,0 +1,122 @@
+<?php
+
+return [
+    'nav' => [
+        'home' => 'Home',
+        'services' => 'Services',
+        'contact' => 'Contact',
+        'devis' => 'Request a Quote',
+    ],
+    'hero' => [
+        'title' => 'Fast and Reliable Shipping Service',
+        'subtitle' => 'Track your packages in real-time and enjoy secure delivery worldwide.',
+        'track_input' => 'Tracking Number',
+        'track_button' => 'Track',
+    ],
+    'stats' => [
+        'parcel' => 'Parcels',
+        'countries' => 'Countries',
+        'addresses' => 'Addresses',
+        'clients' => 'Clients',
+    ],
+    'featured' => [
+        'quality_title' => 'Guaranteed Quality',
+        'quality_description' => 'We are committed to providing high-quality services to meet your expectations.',
+        'punctuality_title' => 'Punctuality',
+        'punctuality_description' => 'On-time delivery, every time, to ensure your satisfaction.',
+        'support_title' => '24/7 Support',
+        'support_description' => 'Our team is available 24/7 to meet your needs.',
+        'request_quote' => 'Request a Quote', // Modifié ici
+    ],
+    'about' => [
+        'title' => 'About Us',
+        'description' => config('app.name', 'Transtonus') . ' is a company specializing in maritime and cargo freight transport. We provide reliable and customized logistics solutions to meet the needs of our international clients.',
+        'feature1_title' => 'Maritime Transport',
+        'feature1_description' => 'We ensure the transport of your goods by sea, with secure and optimized services for all types of cargo.',
+        'feature2_title' => 'Cargo Logistics',
+        'feature2_description' => 'Our expertise in cargo logistics guarantees efficient management of your shipments, from packaging to final delivery.',
+        'feature3_title' => 'Customized Solutions',
+        'feature3_description' => 'We offer tailored solutions to meet the specific requirements of each client, respecting deadlines and budgets.',
+    ],
+    'services' => [
+        'section_subtitle' => 'Our Services',
+        'section_title' => 'Our Services',
+        'section_description' => 'We offer a full range of logistics services to meet your needs.',
+        'storage_title' => 'Storage',
+        'storage_description' => 'Secure and tailored storage solutions available in our modern warehouses.',
+        'logistics_title' => 'Logistics',
+        'logistics_description' => 'Optimized supply chain management for fast and reliable delivery.',
+        'cargo_title' => 'Cargo Transport',
+        'cargo_description' => 'Sea, air, and land freight transport for national and international shipments.',
+        'trucking_title' => 'Trucking',
+        'trucking_description' => 'Road transport services for fast and secure deliveries across the country.',
+        'packaging_title' => 'Packaging',
+        'packaging_description' => 'Professional packaging services to protect your goods during transit.',
+        'warehousing_title' => 'Warehousing',
+        'warehousing_description' => 'Flexible warehousing solutions to meet your short- and long-term storage needs.',
+    ],
+    'cta' => [
+        'background_alt' => 'Call To Action section background',
+        'title' => 'Request a Quote',
+        'description' => 'We are here to meet your logistics needs. Contact us today for a personalized quote.',
+        'button_text' => 'Request a Quote',
+    ],
+    'faq' => [
+        'section_subtitle' => 'Frequently Asked Questions',
+        'section_title' => 'Frequently Asked Questions',
+        'section_description' => 'Find answers to the most common questions about our services.',
+        'question1' => 'What transportation services do you offer?',
+        'answer1' => 'We offer a full range of transportation services, including maritime, air, road transport, and warehousing.',
+        'question2' => 'How can I track my package?',
+        'answer2' => 'You can track your package using the tracking number provided in your order confirmation.',
+        'question3' => 'What are the delivery times?',
+        'answer3' => 'Delivery times vary depending on the service chosen. Contact us for more details.',
+        'question4' => 'Do you offer packaging services?',
+        'answer4' => 'Yes, we offer professional packaging services to ensure the safety of your goods.',
+        'question5' => 'How can I request a quote?',
+        'answer5' => 'You can request a quote by filling out our online form or contacting us directly.',
+    ],
+    'testimonials' => [
+        'testimonial1' => [
+            'name' => 'John Smith',
+            'position' => 'CEO & Founder',
+            'text' => 'Thanks to ' . config('app.name') . ', our company has been able to optimize its international deliveries. The service is reliable and professional.',
+        ],
+        'testimonial2' => [
+            'name' => 'Mary Johnson',
+            'position' => 'Logistics Manager',
+            'text' => config('app.name') . ' has revolutionized our supply chain. Deadlines are met and real-time tracking is a real plus.',
+        ],
+        'testimonial3' => [
+            'name' => 'Peter Williams',
+            'position' => 'Freelancer',
+            'text' => 'I recommend ' . config('app.name') . ' for their exceptional customer service and flexibility. They were able to adapt to my specific needs.',
+        ],
+        // Added 5 new testimonials
+        'testimonial4' => [
+            'name' => 'Sophie Roberts',
+            'position' => 'Import-Export Director',
+            'text' => 'Since working with ' . config('app.name') . ', our shipping times have been reduced by 30%. An exceptional logistics partner.',
+        ],
+        'testimonial5' => [
+            'name' => 'Thomas Brown',
+            'position' => 'Supply Chain Manager',
+            'text' => 'The transparency and efficiency of ' . config('app.name') . ' have made all the difference for our business. We particularly appreciate their real-time tracking system.',
+        ],
+        'testimonial6' => [
+            'name' => 'Emily Davis',
+            'position' => 'E-commerce Manager',
+            'text' => config('app.name') . ' has transformed our international delivery experience. Our customers are delighted with the speed and reliability of the service.',
+        ],
+        'testimonial7' => [
+            'name' => 'Frank Wilson',
+            'position' => 'Commercial Director',
+            'text' => 'We have tested several logistics providers, but ' . config('app.name') . ' is by far the most reliable and professional. A trusted partner.',
+        ],
+        'testimonial8' => [
+            'name' => 'Camille Harris',
+            'position' => 'Purchasing Manager',
+            'text' => 'The quality of ' . config('app.name') . '\'s customer service is exceptional. Always attentive and responsive, they find solutions to all our logistics challenges.',
+        ],
+    ],
+];

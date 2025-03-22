@@ -1,0 +1,167 @@
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about {
+    padding: 60px 0;
+    background-color: var(--surface-color);
+}
+
+.about .row {
+    min-height: 400px; /* Hauteur minimale pour assurer un bon espacement */
+}
+
+.about .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.about .content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-in-out; /* Animation pour le titre */
+}
+
+.about .content p {
+    font-size: 16px;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-in-out 0.2s; /* Animation avec délai */
+    animation-fill-mode: both;
+}
+
+.about .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about .content ul li {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px;
+    animation: fadeInUp 0.8s ease-in-out; /* Animation pour chaque élément de la liste */
+    animation-fill-mode: both;
+}
+
+.about .content ul li:nth-child(1) {
+    animation-delay: 0.4s; /* Délai pour le premier élément */
+}
+
+.about .content ul li:nth-child(2) {
+    animation-delay: 0.6s; /* Délai pour le deuxième élément */
+}
+
+.about .content ul li:nth-child(3) {
+    animation-delay: 0.8s; /* Délai pour le troisième élément */
+}
+
+.about .content ul i {
+    flex-shrink: 0;
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-right: 20px;
+    line-height: 0;
+    transition: transform 0.3s ease, color 0.3s ease; /* Transition pour les icônes */
+    animation: bounce 1.5s infinite; /* Animation de rebond pour les icônes */
+}
+
+.about .content ul i:hover {
+    transform: scale(1.1); /* Effet de zoom au survol */
+    color: var(--heading-color); /* Changement de couleur au survol */
+    animation: none; /* Désactiver l'animation au survol */
+}
+
+.about .content ul h5 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--heading-color);
+    transition: color 0.3s ease;
+}
+
+.about .content ul h5:hover {
+    color: var(--accent-color); /* Changement de couleur au survol */
+}
+
+.about .content ul p {
+    font-size: 15px;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+    transition: color 0.3s ease;
+}
+
+.about .content ul p:hover {
+    color: var(--default-color); /* Changement de couleur au survol */
+}
+
+/* Image container styles */
+.about-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeInRight 0.8s ease-in-out; /* Animation pour l'image */
+    animation-fill-mode: both;
+}
+
+.about-img-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.about-img-container img:hover {
+    transform: scale(1.03); /* Effet de zoom au survol */
+    filter: brightness(1.1); /* Légère augmentation de la luminosité */
+}
+
+/* Keyframes pour les animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .about .row {
+        min-height: auto;
+    }
+    
+    .about-img-container {
+        margin-bottom: 30px;
+    }
+}
