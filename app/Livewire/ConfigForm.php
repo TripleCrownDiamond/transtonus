@@ -16,6 +16,9 @@ class ConfigForm extends Component
     public $app_phone;
     public $app_email;
 
+    // Désactiver le rafraîchissement automatique
+    protected $updatesQueryString = [];
+
     // Accepter les données passées depuis la vue
     public function mount($app_name = null, $app_address = null, $app_city = null, $app_country = null, $app_phone = null, $app_email = null)
     {
@@ -40,7 +43,7 @@ class ConfigForm extends Component
         ];
     }
 
-    // Soumettre le formulaire
+    // Soumettre le formulaire - éviter redirections/refresh
     public function submit()
     {
         $this->validate();
@@ -82,12 +85,17 @@ class ConfigForm extends Component
             // Rafraîchir les valeurs en mémoire correctement
             config(['app.name' => $this->app_name]);
 
-            // Ne pas utiliser session()->flash() avec Livewire pour éviter le rechargement
-            // Utiliser plutôt dispatch() pour les événements Livewire
+            // Utiliser uniquement dispatch() pour éviter le rechargement
             $this->dispatch('config-updated', ['message' => 'Configuration enregistrée avec succès.', 'type' => 'success']);
+
+            // Empêcher tout refresh automatique
+            return null;
         } catch (\Exception $e) {
             // Message d'erreur via événement
             $this->dispatch('config-update-failed', ['message' => 'Une erreur s\'est produite : ' . $e->getMessage(), 'type' => 'error']);
+
+            // Empêcher tout refresh automatique
+            return null;
         }
     }
 

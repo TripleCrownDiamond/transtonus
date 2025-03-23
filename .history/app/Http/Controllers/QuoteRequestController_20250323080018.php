@@ -9,6 +9,6 @@ class QuoteRequestController extends Controller
     public function index()
     {
         // Passer les données à la vue
-        return view('quotes');
+        return view('languages');
     }
 }
