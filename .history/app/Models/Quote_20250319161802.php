@@ -24,6 +24,5 @@ class Quote extends Model
         'destination',
         'details',
         'status',
-        'locale',
     ];
 }
