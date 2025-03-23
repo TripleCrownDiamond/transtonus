@@ -18,6 +18,9 @@ class ManageLanguages extends Component
     public $currentTranslations = []; // Pour stocker les traductions actuelles
     public $isSaving = false; // Pour désactiver le bouton pendant la sauvegarde
     public $filteredTranslations = [];
+    public $isDeletingLanguage = false;
+    public $languageToDelete = null;
+    public $showDeleteConfirmation = false;
 
     public function mount()
     {
@@ -386,6 +389,110 @@ class ManageLanguages extends Component
                 return $var;
             default:
                 return var_export($var, true);
+        }
+    }
+
+
+    // Method to confirm deletion
+    public function confirmDeleteLanguage($language)
+    {
+        // Don't allow deleting French (primary language)
+        if ($language === 'fr') {
+            $this->dispatch('language-update-failed', [
+                'message' => "La langue française est la langue principale et ne peut pas être supprimée.",
+                'type' => 'error'
+            ]);
+            return;
+        }
+
+        $this->languageToDelete = $language;
+        $this->showDeleteConfirmation = true;
+    }
+
+    // Method to cancel deletion
+    public function cancelDeleteLanguage()
+    {
+        $this->languageToDelete = null;
+        $this->showDeleteConfirmation = false;
+    }
+
+    // Method to delete a language
+    public function deleteLanguage()
+    {
+        // Set deleting state to true to disable the button
+        $this->isDeletingLanguage = true;
+
+        try {
+            // Check if a language is selected for deletion
+            if (empty($this->languageToDelete)) {
+                $this->dispatch('language-update-failed', [
+                    'message' => "Aucune langue sélectionnée pour la suppression.",
+                    'type' => 'error'
+                ]);
+                $this->isDeletingLanguage = false;
+                $this->showDeleteConfirmation = false;
+                return;
+            }
+
+            // Don't allow deleting French (primary language)
+            if ($this->languageToDelete === 'fr') {
+                $this->dispatch('language-update-failed', [
+                    'message' => "La langue française est la langue principale et ne peut pas être supprimée.",
+                    'type' => 'error'
+                ]);
+                $this->isDeletingLanguage = false;
+                $this->showDeleteConfirmation = false;
+                return;
+            }
+
+            // Determine the language path
+            $langBasePath = base_path('lang');
+            if (!File::exists($langBasePath)) {
+                $langBasePath = resource_path('lang');
+            }
+
+            $langPath = "$langBasePath/{$this->languageToDelete}";
+
+            if (!File::exists($langPath)) {
+                $this->dispatch('language-update-failed', [
+                    'message' => "Le dossier de langue '{$this->languageToDelete}' n'existe pas.",
+                    'type' => 'error'
+                ]);
+                $this->isDeletingLanguage = false;
+                $this->showDeleteConfirmation = false;
+                return;
+            }
+
+            // Delete the language directory
+            File::deleteDirectory($langPath);
+
+            // Store the name of the deleted language for success message
+            $deletedLang = $this->languageToDelete;
+
+            // Update the list of languages
+            $this->languages = $this->getAvailableLanguages();
+
+            // If the deleted language was the selected one, switch to French
+            if ($this->selectedLanguage === $deletedLang) {
+                $this->selectedLanguage = 'fr';
+                $this->loadTranslations('fr');
+            }
+
+            // Send success event
+            $this->dispatch('language-updated', [
+                'message' => "Langue '$deletedLang' supprimée avec succès.",
+                'type' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            $this->dispatch('language-update-failed', [
+                'message' => "Erreur lors de la suppression de la langue: " . $e->getMessage(),
+                'type' => 'error'
+            ]);
+        } finally {
+            // Reset deletion state
+            $this->isDeletingLanguage = false;
+            $this->languageToDelete = null;
+            $this->showDeleteConfirmation = false;
         }
     }
 
