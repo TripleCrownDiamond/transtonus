@@ -57,7 +57,6 @@ Route::middleware([
     Route::prefix('dashboard')->group(function () {
         Route::get('/configs', [ConfigController::class, 'index'])->name('configs');
         Route::get('/languages', [LanguageController::class, 'index'])->name('languages');
-        Route::post('/languages', [LanguageController::class, 'store'])->name('languages.store');
         Route::delete('/languages/{language}', [LanguageController::class, 'destroy'])->name('languages.destroy');
         Route::get('/quote-request', [QuoteRequestController::class, 'index'])->name('quote-request');
         Route::get('/quote-request/{quoteRequest}', [QuoteRequestController::class, 'show'])->name('quote-request.show');
