@@ -29,11 +29,35 @@ class ManageLanguages extends Component
         }
     }
 
+    // Modifiez la méthode filterTranslations pour filtrer sur les clés ET les valeurs
+    protected function filterTranslations()
+    {
+        if (empty($this->searchFilter)) {
+            $this->filteredTranslations = $this->translations;
+            return;
+        }
+
+        $searchTerm = strtolower($this->searchFilter);
+        $this->filteredTranslations = array_filter($this->translations, function ($value, $key) use ($searchTerm) {
+            // Recherche dans la clé
+            if (str_contains(strtolower($key), $searchTerm)) {
+                return true;
+            }
+
+            // Recherche dans la valeur
+            if (is_string($value) && str_contains(strtolower($value), $searchTerm)) {
+                return true;
+            }
+
+            return false;
+        }, ARRAY_FILTER_USE_BOTH);
+    }
+
+    // Assurez-vous que la méthode resetFilter existe
     public function resetFilter()
     {
         $this->searchFilter = '';
-        $this->updateFilteredTranslations(); // Force la mise à jour des traductions filtrées
-        $this->dispatch('resetFilter'); // Dispatch un événement pour le suivi côté JS si nécessaire
+        $this->filterTranslations();
     }
 
     public function updateFilteredTranslations()
@@ -181,24 +205,28 @@ class ManageLanguages extends Component
     public $isAddingLanguage = false;
 
     // Modifions la méthode addLanguage
-    // Dans la classe ManageLanguages, modifiez la méthode addLanguage
     public function addLanguage()
     {
+        // Définir l'état d'ajout à true pour désactiver le bouton
+        $this->isAddingLanguage = true;
+
         // Validation du code de langue
         if (empty($this->newLanguage)) {
-            session()->flash('message', [
+            $this->dispatch('language-update-failed', [
                 'message' => 'Veuillez saisir un code de langue.',
                 'type' => 'error'
             ]);
+            $this->isAddingLanguage = false;
             return;
         }
 
         // Valider le format du code de langue (2-5 caractères alphabétiques)
         if (!preg_match('/^[a-z]{2,5}$/', $this->newLanguage)) {
-            session()->flash('message', [
+            $this->dispatch('language-update-failed', [
                 'message' => 'Le code de langue doit être composé de 2 à 5 lettres minuscules (ex: fr, en, es).',
                 'type' => 'error'
             ]);
+            $this->isAddingLanguage = false;
             return;
         }
 
@@ -211,10 +239,11 @@ class ManageLanguages extends Component
         $langPath = "$langBasePath/{$this->newLanguage}";
 
         if (File::exists($langPath)) {
-            session()->flash('message', [
+            $this->dispatch('language-update-failed', [
                 'message' => "La langue '{$this->newLanguage}' existe déjà.",
                 'type' => 'error'
             ]);
+            $this->isAddingLanguage = false;
             return;
         }
 
@@ -249,7 +278,7 @@ class ManageLanguages extends Component
                 // Mettre à jour la liste des langues
                 $this->languages = $this->getAvailableLanguages();
 
-                session()->flash('message', [
+                $this->dispatch('language-updated', [
                     'message' => "Langue '$addedLang' ajoutée avec succès.",
                     'type' => 'success'
                 ]);
@@ -258,23 +287,38 @@ class ManageLanguages extends Component
                 $this->selectedLanguage = $addedLang;
                 $this->loadTranslations($addedLang);
             } else {
-                session()->flash('message', [
+                $this->dispatch('language-update-failed', [
                     'message' => "Fichier source de traduction introuvable.",
                     'type' => 'error'
                 ]);
             }
         } catch (\Exception $e) {
-            session()->flash('message', [
+            $this->dispatch('language-update-failed', [
                 'message' => "Erreur lors de l'ajout de la langue: " . $e->getMessage(),
                 'type' => 'error'
             ]);
         }
+
+        // Réinitialiser l'état d'ajout à false pour réactiver le bouton
+        $this->isAddingLanguage = false;
     }
 
+    // Modifiez également la méthode saveTranslations pour utiliser les mêmes événements
     public function saveTranslations()
     {
+        // Définir l'état de sauvegarde à true pour désactiver le bouton
+        $this->isSaving = true;
+
         try {
-            $this->isSaving = true; // Désactiver le bouton pendant la sauvegarde
+            // Vérifier si les traductions ont été modifiées
+            if ($this->translations === $this->currentTranslations) {
+                $this->dispatch('language-updated', [
+                    'message' => "Aucune modification n'a été apportée aux traductions pour '{$this->selectedLanguage}'.",
+                    'type' => 'success'
+                ]);
+                $this->isSaving = false;
+                return null;
+            }
 
             // Déterminer le chemin de langue
             $langBasePath = base_path('lang');
@@ -282,31 +326,41 @@ class ManageLanguages extends Component
                 $langBasePath = resource_path('lang');
             }
 
-            // Reconvertir les traductions aplaties en tableau multidimensionnel
-            $structuredTranslations = $this->unflattenArray($this->translations);
+            $langPath = "$langBasePath/{$this->selectedLanguage}";
+            $filePath = "$langPath/messages.php";
 
-            // Créer le contenu du fichier PHP
-            $content = "<?php\n\nreturn " . $this->varExport($structuredTranslations) . ";\n";
+            // Convertir les traductions aplaties en structure hiérarchique
+            $unflattened = $this->unflattenArray($this->translations);
 
-            // Enregistrer dans le fichier
-            $filePath = "$langBasePath/{$this->selectedLanguage}/messages.php";
+            // Générer le contenu du fichier PHP
+            $content = "<?php\n\nreturn " . $this->varExport($unflattened) . ";\n";
+
+            // Sauvegarder le fichier
             File::put($filePath, $content);
 
-            $this->dispatch('config-updated', [
+            // Mettre à jour les traductions actuelles
+            $this->currentTranslations = $this->translations;
+
+            // Envoyer un événement de succès
+            $this->dispatch('language-updated', [
                 'message' => "Traductions pour '{$this->selectedLanguage}' enregistrées avec succès.",
                 'type' => 'success'
             ]);
 
-            // Recharger les traductions pour refléter les changements
-            $this->loadTranslations($this->selectedLanguage);
+            // Retourner null pour éviter tout rechargement de page
+            return null;
         } catch (\Exception $e) {
-            $this->dispatch('config-updated', [
+            $this->dispatch('language-update-failed', [
                 'message' => "Erreur lors de l'enregistrement des traductions: " . $e->getMessage(),
                 'type' => 'error'
             ]);
         } finally {
-            $this->isSaving = false; // Réactiver le bouton après la sauvegarde
+            // Réinitialiser l'état de sauvegarde à false pour réactiver le bouton
+            $this->isSaving = false;
         }
+
+        // Retourner null pour éviter tout rechargement de page
+        return null;
     }
 
     private function varExport($var, $indent = "")

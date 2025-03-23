@@ -40,14 +40,12 @@
                 <li class="dropdown">
                     <a href="#"><span>{{ strtoupper(app()->getLocale()) }}</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
-                        <li>
-                            <a href="{{ route(Route::currentRouteName(), ['locale' => 'fr'] + Route::current()->parameters()) }}" 
-                               class="{{ app()->getLocale() == 'fr' ? 'active' : '' }}">FR</a>
-                        </li>
-                        <li>
-                            <a href="{{ route(Route::currentRouteName(), ['locale' => 'en'] + Route::current()->parameters()) }}" 
-                               class="{{ app()->getLocale() == 'en' ? 'active' : '' }}">EN</a>
-                        </li>
+                        @foreach($availableLanguages as $language)
+                            <li>
+                                <a href="{{ route(Route::currentRouteName(), ['locale' => $language] + Route::current()->parameters()) }}" 
+                                   class="{{ app()->getLocale() == $language ? 'active' : '' }}">{{ strtoupper($language) }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 

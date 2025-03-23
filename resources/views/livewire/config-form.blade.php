@@ -1,42 +1,16 @@
 <div>
-    <!-- Afficher un message de succès depuis la session -->
-    @if (session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-            <strong class="font-bold">Succès!</strong>
-            <span class="block sm:inline">{{ session('success') }}</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="$wire.$refresh()">
-                <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <title>Close</title>
-                    <path
-                        d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                </svg>
-            </span>
-        </div>
-    @endif
-
-    <!-- Afficher un message d'erreur depuis la session -->
-    @if (session('error'))
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-            <strong class="font-bold">Erreur!</strong>
-            <span class="block sm:inline">{{ session('error') }}</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="$wire.$refresh()">
-                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <title>Close</title>
-                    <path
-                        d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                </svg>
-            </span>
-        </div>
-    @endif
-
     <!-- Notifications dynamiques sans rechargement de page -->
     <div x-data="{
         success: false,
         error: false,
         successMessage: '',
-        errorMessage: ''
+        errorMessage: '',
+        closeAlert(type) {
+            if (type === 'success') this.success = false;
+            if (type === 'error') this.error = false;
+            // Éviter propagation ou comportements par défaut
+            return false;
+        }
     }"
         x-on:config-updated.window="
             success = true;
@@ -54,7 +28,7 @@
             class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
             <strong class="font-bold">Succès!</strong>
             <span class="block sm:inline" x-text="successMessage"></span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="success = false">
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click.prevent="closeAlert('success')">
                 <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20">
                     <title>Close</title>
@@ -69,7 +43,7 @@
             class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
             <strong class="font-bold">Erreur!</strong>
             <span class="block sm:inline" x-text="errorMessage"></span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="error = false">
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click.prevent="closeAlert('error')">
                 <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20">
                     <title>Close</title>
@@ -155,14 +129,23 @@
 
             <!-- Bouton de soumission avec indicateur de chargement -->
             <div class="flex justify-end">
-                <button type="submit" wire:loading.attr="disabled"
+                <button type="submit" 
+                    wire:loading.attr="disabled" 
+                    wire:target="submit"
                     class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200
                     bg-indigo-600 hover:bg-indigo-700 
                     disabled:bg-indigo-300 disabled:cursor-not-allowed">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" wire:loading.class="hidden" wire:target="submit">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 13l4 4L19 7" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-2 hidden" fill="none" 
+                        viewBox="0 0 24 24" stroke="currentColor" wire:loading.class.remove="hidden" wire:target="submit">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
                     <span wire:loading.remove wire:target="submit">Enregistrer</span>
-                    <span wire:loading wire:target="submit" class="flex items-center">
-                        Soumission en cours...
-                    </span>
+                    <span wire:loading wire:target="submit">Soumission en cours...</span>
                 </button>
             </div>
         </form>

@@ -3,6 +3,7 @@
 // routes/web.php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ShipmentController;
@@ -12,6 +13,22 @@ use App\Http\Controllers\AdminShipmentController;
 use App\Http\Controllers\ConfigController;
 use App\Services\StatsService;
 
+// Function to get available languages
+function getAvailableLanguages()
+{
+    $langPath = base_path('lang');
+    if (!File::exists($langPath)) {
+        $langPath = resource_path('lang');
+    }
+
+    $directories = File::directories($langPath);
+    return array_map('basename', $directories);
+}
+
+// Get available languages
+$availableLanguages = getAvailableLanguages();
+$localePattern = implode('|', $availableLanguages);
+
 // Redirection vers la locale par défaut (fr)
 Route::get('/', function () {
     return Redirect::to('/fr');
@@ -19,7 +36,7 @@ Route::get('/', function () {
 
 // Routes avec préfixe de locale
 Route::prefix('{locale}')
-    ->where(['locale' => 'fr|en|es'])
+    ->where(['locale' => $localePattern])
     ->middleware(['setlocale', 'track.visitors'])
     ->group(function () {
         Route::get('/', function () {
