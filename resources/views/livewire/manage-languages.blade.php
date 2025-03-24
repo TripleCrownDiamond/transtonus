@@ -74,18 +74,18 @@
                     <input type="text" wire:model="newLanguage" id="newLanguage"
                         class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Code de langue (ex: en, es, de)">
-                    <button wire:click="addLanguage" 
-                        wire:loading.attr="disabled" 
-                        wire:target="addLanguage"
+                    <button wire:click="addLanguage" wire:loading.attr="disabled" wire:target="addLanguage"
                         :disabled="@js($isAddingLanguage)"
                         class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300 disabled:cursor-not-allowed">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" wire:loading.class="hidden" wire:target="addLanguage">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-1 hidden" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" wire:loading.class.remove="hidden" wire:target="addLanguage">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-1 hidden" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" wire:loading.class.remove="hidden"
+                            wire:target="addLanguage">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
                         <span wire:loading.remove wire:target="addLanguage">Ajouter</span>
                         <span wire:loading wire:target="addLanguage">Ajout...</span>
@@ -105,7 +105,7 @@
                             <option value="{{ $language }}">{{ $language }}</option>
                         @endforeach
                     </select>
-                    
+
                     <!-- Bouton de suppression de langue -->
                     <button wire:click="confirmDeleteLanguage('{{ $selectedLanguage }}')"
                         class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 {{ $selectedLanguage === 'fr' ? 'opacity-50 cursor-not-allowed' : '' }}"
@@ -124,13 +124,14 @@
             </div>
 
             <!-- Modal de confirmation de suppression -->
-            <div x-data="{ open: @entangle('showDeleteConfirmation') }" x-show="open" x-cloak
-                class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div x-data="{ open: @entangle('showDeleteConfirmation') }" x-show="open" x-cloak class="fixed inset-0 z-50 overflow-y-auto"
+                aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <!-- Overlay de fond -->
-                    <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
-                        x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
-                        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                    <div x-show="open" x-transition:enter="ease-out duration-300"
+                        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
                         class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
                     <!-- Centrer le modal -->
@@ -148,8 +149,8 @@
                             <div class="sm:flex sm:items-start">
                                 <div
                                     class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
@@ -160,27 +161,30 @@
                                     </h3>
                                     <div class="mt-2">
                                         <p class="text-sm text-gray-500">
-                                            Êtes-vous sûr de vouloir supprimer la langue <span class="font-semibold">{{ $languageToDelete }}</span> ?
-                                            Cette action est irréversible et supprimera toutes les traductions associées.
+                                            Êtes-vous sûr de vouloir supprimer la langue <span
+                                                class="font-semibold">{{ $languageToDelete }}</span> ?
+                                            Cette action est irréversible et supprimera toutes les traductions
+                                            associées.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                            <button wire:click="deleteLanguage" 
-                                wire:loading.attr="disabled" 
-                                wire:target="deleteLanguage"
-                                :disabled="@js($isDeletingLanguage)"
+                            <button wire:click="deleteLanguage" wire:loading.attr="disabled"
+                                wire:target="deleteLanguage" :disabled="@js($isDeletingLanguage)"
                                 class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm disabled:bg-red-300 disabled:cursor-not-allowed">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" wire:loading.class="hidden" wire:target="deleteLanguage">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" wire:loading.class="hidden"
+                                    wire:target="deleteLanguage">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-1 hidden" fill="none" 
-                                    viewBox="0 0 24 24" stroke="currentColor" wire:loading.class.remove="hidden" wire:target="deleteLanguage">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-1 hidden"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    wire:loading.class.remove="hidden" wire:target="deleteLanguage">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                 </svg>
                                 <span wire:loading.remove wire:target="deleteLanguage">Supprimer</span>
                                 <span wire:loading wire:target="deleteLanguage">Suppression...</span>
@@ -208,7 +212,8 @@
                 <div class="bg-white rounded-lg shadow-sm p-4">
                     <!-- Filtre de recherche avec bouton d'annulation -->
                     <div class="mb-4">
-                        <label for="searchFilter" class="block text-sm font-medium text-gray-700 mb-1">Rechercher une clé ou valeur</label>
+                        <label for="searchFilter" class="block text-sm font-medium text-gray-700 mb-1">Rechercher une
+                            clé ou valeur</label>
                         <div class="flex">
                             <input type="text" wire:model.live="searchFilter" id="searchFilter"
                                 class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -230,6 +235,7 @@
                         <div class="mt-4 space-y-6">
                             @php
                                 $currentSection = '';
+                                $characterLimit = 100; // Définir la limite de caractères pour utiliser un textarea
                             @endphp
 
                             @foreach ($this->filteredTranslations as $key => $translation)
@@ -237,25 +243,55 @@
                                 <div class="p-4 bg-white rounded-lg shadow-sm">
                                     <!-- Clé de traduction et traduction française au-dessus -->
                                     <div class="mb-3">
-                                        <span class="text-sm font-medium text-gray-700 block mb-1">{{ $key }}</span>
+                                        <span
+                                            class="text-sm font-medium text-gray-700 block mb-1">{{ $key }}</span>
                                         @if (isset($frenchTranslations[$key]))
                                             <div class="text-sm text-gray-500 mb-2">
                                                 <span class="font-medium">Français :</span>
-                                                {{ $frenchTranslations[$key] }}
+                                                @if (strpos($frenchTranslations[$key], '<') !== false && strpos($frenchTranslations[$key], '>') !== false)
+                                                    <div class="mt-1 p-2 bg-gray-50 rounded border border-gray-200">
+                                                        <span class="text-xs text-blue-600 block mb-1">Contient du HTML
+                                                            - Préservez les balises lors de la traduction</span>
+                                                        <div class="font-mono text-xs overflow-x-auto">
+                                                            {!! htmlspecialchars($frenchTranslations[$key]) !!}</div>
+                                                        <div class="mt-1">{!! $frenchTranslations[$key] !!}</div>
+                                                    </div>
+                                                @else
+                                                    {{ $frenchTranslations[$key] }}
+                                                @endif
                                             </div>
                                         @endif
-                                        
+
                                         <!-- Valeur actuelle dans la langue sélectionnée -->
-                                        <div class="text-sm bg-gray-50 border-l-4 border-indigo-500 pl-3 py-2 rounded mb-2">
-                                            <span class="font-medium text-indigo-700">Valeur actuelle :</span> 
-                                            <span class="text-gray-800">{{ isset($translations[$key]) && !empty($translations[$key]) ? $translations[$key] : 'Non défini' }}</span>
+                                        <div
+                                            class="text-sm bg-gray-50 border-l-4 border-indigo-500 pl-3 py-2 rounded mb-2">
+                                            <span class="font-medium text-indigo-700">Valeur actuelle :</span>
+                                            @if (isset($translations[$key]) && !empty($translations[$key]))
+                                                @if (strpos($translations[$key], '<') !== false && strpos($translations[$key], '>') !== false)
+                                                    <div class="mt-1 p-2 bg-white rounded border border-gray-200">
+                                                        <div class="mt-1">{!! $translations[$key] !!}</div>
+                                                    </div>
+                                                @else
+                                                    <span class="text-gray-800">{{ $translations[$key] }}</span>
+                                                @endif
+                                            @else
+                                                <span class="text-gray-800">Non défini</span>
+                                            @endif
                                         </div>
                                     </div>
-                                    <!-- Champ de saisie de traduction en dessous -->
+                                    <!-- Champ de saisie de traduction en dessous - textarea pour les longues valeurs ou contenu HTML -->
                                     <div>
-                                        <input type="text" wire:model="translations.{{ $key }}"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Traduction pour {{ $key }}">
+                                        @if (isset($frenchTranslations[$key]) &&
+                                                (strlen($frenchTranslations[$key]) > $characterLimit || strpos($frenchTranslations[$key], '<') !== false))
+                                            <textarea wire:model="translations.{{ $key }}"
+                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm font-mono"
+                                                placeholder="Traduction pour {{ $key }}"
+                                                rows="{{ max(ceil(strlen($frenchTranslations[$key]) / 100) + 1, 5) }}" style="min-height: 80px;"></textarea>
+                                        @else
+                                            <input type="text" wire:model="translations.{{ $key }}"
+                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                placeholder="Traduction pour {{ $key }}">
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
@@ -270,21 +306,23 @@
                     <div class="mt-6 text-right">
                         <!-- Bouton de sauvegarde -->
                         <div class="mt-6 text-right">
-                            <button wire:click="saveTranslations" 
-                                wire:loading.attr="disabled" 
-                                wire:target="saveTranslations"
-                                :disabled="@js($isSaving)"
+                            <button wire:click="saveTranslations" wire:loading.attr="disabled"
+                                wire:target="saveTranslations" :disabled="@js($isSaving)"
                                 class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300 disabled:cursor-not-allowed">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" wire:loading.class="hidden" wire:target="saveTranslations">
+                                    viewBox="0 0 24 24" stroke="currentColor" wire:loading.class="hidden"
+                                    wire:target="saveTranslations">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-2 hidden" fill="none" 
-                                    viewBox="0 0 24 24" stroke="currentColor" wire:loading.class.remove="hidden" wire:target="saveTranslations">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin h-5 w-5 mr-2 hidden"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    wire:loading.class.remove="hidden" wire:target="saveTranslations">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                 </svg>
-                                <span wire:loading.remove wire:target="saveTranslations">Enregistrer les modifications</span>
+                                <span wire:loading.remove wire:target="saveTranslations">Enregistrer les
+                                    modifications</span>
                                 <span wire:loading wire:target="saveTranslations">Enregistrement...</span>
                             </button>
                         </div>
