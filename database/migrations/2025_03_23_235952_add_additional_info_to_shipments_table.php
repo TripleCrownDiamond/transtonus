@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('quotes', function (Blueprint $table) {
-            $table->string('locale')->default('fr')->after('status');
+        Schema::table('shipments', function (Blueprint $table) {
+            $table->text('additional_info')->nullable()->after('instructions');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('quotes', function (Blueprint $table) {
-            $table->dropColumn('locale');
+        Schema::table('shipments', function (Blueprint $table) {
+            $table->dropColumn('additional_info');
         });
     }
 };

@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('quotes', function (Blueprint $table) {
-            $table->string('locale', 2)->nullable()->after('id');
+        Schema::create('currencies', function (Blueprint $table) {
+            $table->id();
+            $table->string('code', 3)->unique();
+            $table->string('name');
+            $table->string('symbol', 10);
+            $table->boolean('is_default')->default(false);
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('quotes', function (Blueprint $table) {
-            $table->dropColumn('locale');
-        });
+        Schema::dropIfExists('currencies');
     }
 };

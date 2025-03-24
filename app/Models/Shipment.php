@@ -18,12 +18,17 @@ class Shipment extends Model
         'tracking_number',
         'origin',
         'destination',
+        'current_location',
         'departure_date',
         'estimated_arrival_date',
         'status',
-        'history',
         'recipient_name',
+        'recipient_email',
         'sender_name',
+        'locale',
+        // Add the new field
+        'additional_info',
+        'history',
     ];
 
     /**
@@ -32,8 +37,16 @@ class Shipment extends Model
      * @var array
      */
     protected $casts = [
-        'departure_date' => 'date',
-        'estimated_arrival_date' => 'date',
+        'departure_date' => 'datetime',
+        'estimated_arrival_date' => 'datetime',
         'history' => 'array',
     ];
+
+    /**
+     * Get the payments for the shipment.
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

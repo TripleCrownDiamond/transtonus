@@ -27,6 +27,9 @@
                     <x-nav-link href="{{ route('all-shipments') }}" :active="request()->routeIs('all-shipments')">
                         Expéditions
                     </x-nav-link>
+                     <x-nav-link href="{{ route('payment-methods') }}" :active="request()->routeIs('payment-methods')">
+                        Méthodes de paiement
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -121,6 +124,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('all-shipments') }}" :active="request()->routeIs('all-shipments')">
                 Expéditions
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('payment-methods') }}" :active="request()->routeIs('all-shipments')">
+                Méthodes de paiement
             </x-responsive-nav-link>
         </div>
 

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('quotes', function (Blueprint $table) {
-            $table->string('locale', 2)->nullable()->after('id');
+        Schema::table('shipments', function (Blueprint $table) {
+            $table->string('locale')->default('fr')->after('sender_name');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('quotes', function (Blueprint $table) {
+        Schema::table('shipments', function (Blueprint $table) {
             $table->dropColumn('locale');
         });
     }

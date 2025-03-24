@@ -61,24 +61,38 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function (StatsService $statsService) {
-        return view('dashboard', [
-            'visitorStats' => $statsService->getVisitorStats(),
-            'quoteStats' => $statsService->getQuoteStats(),
-            'shipmentStats' => $statsService->getShipmentStats(),
-            'contactStats' => $statsService->getContactStats(),
-        ]);
-    })->name('dashboard');
+    // Add this route or modify the existing dashboard route
+    // Modifier la route du dashboard
+    Route::get('/dashboard', function () {
+        $statsService = new App\Services\StatsService();
+        
+        $visitorStats = $statsService->getVisitorStats();
+        $quoteStats = $statsService->getQuoteStats();
+        $shipmentStats = $statsService->getShipmentStats();
+        $contactStats = $statsService->getContactStats();
+        
+        $visitors = App\Models\Visitor::latest()->paginate(10);
+        
+        return view('dashboard', compact(
+            'visitors', 
+            'visitorStats', 
+            'quoteStats', 
+            'shipmentStats', 
+            'contactStats'
+        ));
+    })->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 
     // Routes administratives sous /dashboard
     Route::prefix('dashboard')->group(function () {
         Route::get('/configs', [ConfigController::class, 'index'])->name('configs');
         Route::get('/languages', [LanguageController::class, 'index'])->name('languages');
         Route::get('/quote-request', [QuoteRequestController::class, 'index'])->name('quote-request');
-        Route::get('/quote-request/{quoteRequest}', [QuoteRequestController::class, 'show'])->name('quote-request.show');
-        Route::delete('/quote-request/{quoteRequest}', [QuoteRequestController::class, 'destroy'])->name('quote-request.destroy');
-        Route::get('/all-shipments', [AdminShipmentController::class, 'index'])->name('all-shipments');
-        Route::get('/all-shipments/{shipment}', [AdminShipmentController::class, 'show'])->name('all-shipments.show');
-        Route::delete('/all-shipments/{shipment}', [AdminShipmentController::class, 'destroy'])->name('all-shipments.destroy');
+        Route::get('/all-shipments', [ShipmentController::class, 'index'])->name('all-shipments');
     });
-});
+}); // Added the missing semicolon here
+
+// Add this route for payment methods management
+Route::get('/dashboard/payment-methods', function () {
+    return view('payment-methods');
+})->middleware(['auth:sanctum', 'verified'])->name('payment-methods');
+    
