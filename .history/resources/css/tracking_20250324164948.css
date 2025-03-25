@@ -1,0 +1,119 @@
+/* Tracking page styles */
+.tracking-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.tracking-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tracking-header h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.tracking-number {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.tracking-body {
+    padding: 30px;
+}
+
+.tracking-info {
+    margin-bottom: 30px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.info-label {
+    width: 40%;
+    font-weight: 600;
+    color: #555;
+}
+
+.info-value {
+    width: 60%;
+}
+
+.formatted-text {
+    white-space: pre-line;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.status-processing {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
+.status-in_transit {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.status-out_for_delivery {
+    background-color: #fff8e1;
+    color: #ff6f00;
+}
+
+.status-delivered {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.status-delayed {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.status-exception {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.payment-status-pending {
+    background-color: #fff8e1;
+    color: #ff6f00;
+}
+
+.payment-status-paid {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.payment-status-failed {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.tracking-footer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+}

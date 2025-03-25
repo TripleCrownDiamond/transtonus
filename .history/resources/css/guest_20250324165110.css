@@ -1,0 +1,18 @@
+/* Importez Bootstrap en premier */
+@import 'bootstrap';
+
+/* Ensuite, importez vos fichiers CSS personnalisés */
+@import 'global';
+@import 'header';
+@import 'hero';
+@import 'featured';
+@import 'about';
+@import 'services';
+@import 'cta';
+@import 'faq';
+@import 'testimonials';
+@import 'footer';
+@import 'contact-section';
+@import 'page-title';
+@import 'preloader';
+@import 'blog';
