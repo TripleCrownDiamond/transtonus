@@ -24,7 +24,7 @@
         h1,
         h2,
         h3 {
-            color: #001973;
+            color: #5E0035;
             margin-top: 20px;
             margin-bottom: 15px;
         }
@@ -57,7 +57,7 @@
 
         th {
             background-color: #f2f2f2;
-            color: #001973;
+            color: #5E0035;
         }
 
         .footer {
@@ -76,13 +76,13 @@
         .social-links a {
             margin: 0 10px;
             text-decoration: none;
-            color: #001973;
+            color: #5E0035;
         }
 
         .btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #ed751c;
+            background-color: #00A7E1;
             color: white;
             text-decoration: none;
             border-radius: 4px;
@@ -99,7 +99,7 @@
     <div class="email-container">
         <!-- Logo -->
         <div class="logo">
-            <img src="{{ config('app.url') }}/img/dark.png" alt="{{ config('app.name') }}" width="180">
+            <img src="{{ asset('img/dark.png') }}g" alt="{{ config('app.name') }}" width="180">
         </div>
 
         <!-- Content -->

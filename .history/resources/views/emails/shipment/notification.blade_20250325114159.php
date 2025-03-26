@@ -7,8 +7,8 @@
         <p>{{ __('messages.shipment_emails.shipment_notification_greeting', ['name' => $shipment->recipient_name]) }}</p>
 
         @if ($isUpdate)
-            <div style="margin: 20px 0; padding: 15px; border-left: 4px solid #ed751c;">
-                <h3 style="color: #ed751c; margin-top: 0;">{{ __('messages.shipment_emails.shipment_update_info') }}</h3>
+            <div style="margin: 20px 0; padding: 15px; border-left: 4px solid #00A7E1;">
+                <h3 style="color: #00A7E1; margin-top: 0;">{{ __('messages.shipment_emails.shipment_update_info') }}</h3>
                 <p>{{ __('messages.shipment_emails.shipment_update_message') }}</p>
 
                 @if (count($changedFields) > 0)
@@ -64,7 +64,7 @@
                         {{ $shipment->origin }}
                         @if ($isUpdate && in_array('origin', $changedFields))
                             <span
-                                style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                         @endif
                     </td>
                 </tr>
@@ -74,7 +74,7 @@
                         {{ $shipment->destination }}
                         @if ($isUpdate && in_array('destination', $changedFields))
                             <span
-                                style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                         @endif
                     </td>
                 </tr>
@@ -84,7 +84,7 @@
                         {{ $shipment->current_location ?: $shipment->origin }}
                         @if ($isUpdate && in_array('current_location', $changedFields))
                             <span
-                                style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                         @endif
                     </td>
                 </tr>
@@ -94,7 +94,7 @@
                         {{ $shipment->departure_date->format('d/m/Y') }}
                         @if ($isUpdate && in_array('departure_date', $changedFields))
                             <span
-                                style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                         @endif
                     </td>
                 </tr>
@@ -104,7 +104,7 @@
                         {{ $shipment->estimated_arrival_date->format('d/m/Y') }}
                         @if ($isUpdate && in_array('estimated_arrival_date', $changedFields))
                             <span
-                                style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                         @endif
                     </td>
                 </tr>
@@ -114,7 +114,7 @@
                         {{ __('messages.shipment_emails.shipment_status_' . $shipment->status) }}
                         @if ($isUpdate && in_array('status', $changedFields))
                             <span
-                                style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                         @endif
                     </td>
                 </tr>
@@ -125,7 +125,7 @@
                             {!! nl2br(e($shipment->additional_info)) !!}
                             @if ($isUpdate && in_array('additional_info', $changedFields))
                                 <span
-                                    style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                    style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                             @endif
                         </td>
                     </tr>
@@ -145,7 +145,7 @@
                             {{ $payment->amount }} {{ $payment->currency->code }}
                             @if ($isUpdate && in_array('amount', $changedFields))
                                 <span
-                                    style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                    style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                             @endif
                         </td>
                     </tr>
@@ -155,7 +155,7 @@
                             {{ __('messages.shipment_emails.payment_method_' . $payment->payment_method) }}
                             @if ($isUpdate && in_array('payment_method', $changedFields))
                                 <span
-                                    style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                    style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                             @endif
                         </td>
                     </tr>
@@ -165,7 +165,7 @@
                             {{ __('messages.shipment_emails.payment_status_' . $payment->status) }}
                             @if ($isUpdate && in_array('payment_status', $changedFields))
                                 <span
-                                    style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                    style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                             @endif
                         </td>
                     </tr>
@@ -176,7 +176,7 @@
                                 {!! nl2br(e($payment->instructions)) !!}
                                 @if ($isUpdate && in_array('instructions', $changedFields))
                                     <span
-                                        style="color: #ed751c; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
+                                        style="color: #00A7E1; font-size: 0.8em; margin-left: 5px;">{{ __('messages.shipment_emails.updated') }}</span>
                                 @endif
                             </td>
                         </tr>

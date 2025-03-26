@@ -53,7 +53,7 @@
         </div>
 
         <!-- Section d'en-tête -->
-        <div class="p-4 lg:p-6 bg-gradient-to-r from-blue-600 to-indigo-700 border-b border-gray-200 rounded-t-lg">
+        <div class="p-4 lg:p-6 bg-gradient-to-r from-[#00A7E1] to-[#00A7E1] border-b border-gray-200 rounded-t-lg">
             <h1 class="text-xl font-bold text-white flex items-center">
                 <!-- Icône SVG représentant des devis -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

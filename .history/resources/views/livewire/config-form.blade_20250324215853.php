@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="p-4 lg:p-6 bg-gradient-to-r from-blue-600 to-indigo-700 border-b border-gray-200 rounded-t-lg">
+    <div class="p-4 lg:p-6 bg-gradient-to-r from-[#00A7E1] to-[#00A7E1] border-b border-gray-200 rounded-t-lg">
         <h1 class="text-xl font-bold text-white flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-5 h-5 mr-2">
@@ -75,7 +75,7 @@
                 <div class="mb-4">
                     <label for="app_name" class="block text-sm font-medium text-gray-700">Nom de l'application</label>
                     <input type="text" wire:model.defer="app_name" id="app_name"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_name')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -85,7 +85,7 @@
                 <div class="mb-4">
                     <label for="app_address" class="block text-sm font-medium text-gray-700">Adresse</label>
                     <input type="text" wire:model.defer="app_address" id="app_address"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_address')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -95,7 +95,7 @@
                 <div class="mb-4">
                     <label for="app_city" class="block text-sm font-medium text-gray-700">Ville</label>
                     <input type="text" wire:model.defer="app_city" id="app_city"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_city')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -105,7 +105,7 @@
                 <div class="mb-4">
                     <label for="app_country" class="block text-sm font-medium text-gray-700">Pays</label>
                     <input type="text" wire:model.defer="app_country" id="app_country"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_country')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -115,7 +115,7 @@
                 <div class="mb-4">
                     <label for="app_phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
                     <input type="text" wire:model.defer="app_phone" id="app_phone"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_phone')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -125,7 +125,7 @@
                 <div class="mb-4">
                     <label for="app_email" class="block text-sm font-medium text-gray-700">Email</label>
                     <input type="email" wire:model.defer="app_email" id="app_email"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_email')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -140,7 +140,7 @@
                 <div class="mb-4">
                     <label for="app_company_legal_name" class="block text-sm font-medium text-gray-700">Nom légal de l'entreprise</label>
                     <input type="text" wire:model.defer="app_company_legal_name" id="app_company_legal_name"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_company_legal_name')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -150,7 +150,7 @@
                 <div class="mb-4">
                     <label for="app_company_registration_number" class="block text-sm font-medium text-gray-700">Numéro d'immatriculation</label>
                     <input type="text" wire:model.defer="app_company_registration_number" id="app_company_registration_number"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_company_registration_number')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -160,7 +160,7 @@
                 <div class="mb-4">
                     <label for="app_company_tax_id" class="block text-sm font-medium text-gray-700">Numéro de TVA</label>
                     <input type="text" wire:model.defer="app_company_tax_id" id="app_company_tax_id"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_company_tax_id')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -170,7 +170,7 @@
                 <div class="mb-4">
                     <label for="app_company_founded" class="block text-sm font-medium text-gray-700">Année de fondation</label>
                     <input type="text" wire:model.defer="app_company_founded" id="app_company_founded"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_company_founded')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -180,7 +180,7 @@
                 <div class="mb-4">
                     <label for="app_legal_contact_email" class="block text-sm font-medium text-gray-700">Email de contact légal</label>
                     <input type="email" wire:model.defer="app_legal_contact_email" id="app_legal_contact_email"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_legal_contact_email')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -190,7 +190,7 @@
                 <div class="mb-4">
                     <label for="app_privacy_last_updated" class="block text-sm font-medium text-gray-700">Date de mise à jour de la politique de confidentialité</label>
                     <input type="date" wire:model.defer="app_privacy_last_updated" id="app_privacy_last_updated"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_privacy_last_updated')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -200,7 +200,7 @@
                 <div class="mb-4">
                     <label for="app_terms_last_updated" class="block text-sm font-medium text-gray-700">Date de mise à jour des conditions d'utilisation</label>
                     <input type="date" wire:model.defer="app_terms_last_updated" id="app_terms_last_updated"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_terms_last_updated')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -210,7 +210,7 @@
                 <div class="mb-4">
                     <label for="app_company_jurisdiction" class="block text-sm font-medium text-gray-700">Juridiction</label>
                     <input type="text" wire:model.defer="app_company_jurisdiction" id="app_company_jurisdiction"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                     @error('app_company_jurisdiction')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -231,7 +231,7 @@
                             </svg>
                         </span>
                         <input type="text" wire:model.defer="app_social_facebook" id="app_social_facebook"
-                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                             placeholder="https://facebook.com/votre-page">
                     </div>
                     @error('app_social_facebook')
@@ -249,7 +249,7 @@
                             </svg>
                         </span>
                         <input type="text" wire:model.defer="app_social_twitter" id="app_social_twitter"
-                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                             placeholder="https://twitter.com/votre-compte">
                     </div>
                     @error('app_social_twitter')
@@ -267,7 +267,7 @@
                                             </svg>
                                         </span>
                                         <input type="text" wire:model.defer="app_social_instagram" id="app_social_instagram"
-                                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                                             placeholder="https://instagram.com/votre-compte">
                                     </div>
                                     @error('app_social_instagram')
@@ -285,7 +285,7 @@
                                             </svg>
                                         </span>
                                         <input type="text" wire:model.defer="app_social_linkedin" id="app_social_linkedin"
-                                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                            class="flex-1 block w-full rounded-none rounded-r-md border-gray-300 focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                                             placeholder="https://linkedin.com/in/votre-profil">
                                     </div>
                                     @error('app_social_linkedin')
@@ -297,7 +297,7 @@
                             <!-- Bouton de soumission -->
                             <div class="flex justify-end">
                                 <button type="submit"
-                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#00A7E1] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A7E1]">
                                     Enregistrer les modifications
                                 </button>
                             </div>

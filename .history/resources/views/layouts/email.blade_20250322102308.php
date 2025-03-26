@@ -15,8 +15,8 @@
     <style>
         /* Variables de couleur */
         :root {
-            --primary-color: #001973;
-            --secondary-color: #ed751c;
+            --primary-color: #5E0035;
+            --secondary-color: #00A7E1;
             --background-color: rgba(237, 117, 28, 0.1); /* Fond transparent */
             --text-color: #212529;
         }

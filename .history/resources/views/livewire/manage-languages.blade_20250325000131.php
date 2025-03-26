@@ -53,7 +53,7 @@
         </div>
 
         <!-- Section d'en-tête -->
-        <div class="p-4 lg:p-6 bg-gradient-to-r from-blue-600 to-indigo-700 border-b border-gray-200 rounded-t-lg">
+        <div class="p-4 lg:p-6 bg-gradient-to-r from-[#00A7E1] to-[#00A7E1] border-b border-gray-200 rounded-t-lg">
             <h1 class="text-xl font-bold text-white flex items-center">
                 <!-- Icône SVG représentant des langues/traductions -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -72,11 +72,11 @@
                     langue</label>
                 <div class="flex">
                     <input type="text" wire:model="newLanguage" id="newLanguage"
-                        class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                         placeholder="Code de langue (ex: en, es, de)">
                     <button wire:click="addLanguage" wire:loading.attr="disabled" wire:target="addLanguage"
                         :disabled="@js($isAddingLanguage)"
-                        class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300 disabled:cursor-not-allowed">
+                        class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white bg-[#00A7E1] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A7E1] disabled:bg-indigo-300 disabled:cursor-not-allowed">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" wire:loading.class="hidden" wire:target="addLanguage">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -100,7 +100,7 @@
                 <div class="flex">
                     <select wire:model="selectedLanguage" wire:change="loadTranslations($event.target.value)"
                         id="selectedLanguage"
-                        class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                         @foreach ($languages as $language)
                             <option value="{{ $language }}">{{ $language }}</option>
                         @endforeach
@@ -190,7 +190,7 @@
                                 <span wire:loading wire:target="deleteLanguage">Suppression...</span>
                             </button>
                             <button wire:click="cancelDeleteLanguage" type="button"
-                                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A7E1] sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                                 Annuler
                             </button>
                         </div>
@@ -216,7 +216,7 @@
                             clé ou valeur</label>
                         <div class="flex">
                             <input type="text" wire:model.live="searchFilter" id="searchFilter"
-                                class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                                 placeholder="Filtrer par clé ou valeur de traduction...">
                             <button wire:click="resetFilter"
                                 class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold {{ !$searchFilter ? 'text-gray-500 bg-gray-200' : 'text-white bg-gray-800' }} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
@@ -250,7 +250,7 @@
                                                 <span class="font-medium">Français :</span>
                                                 @if (strpos($frenchTranslations[$key], '<') !== false && strpos($frenchTranslations[$key], '>') !== false)
                                                     <div class="mt-1 p-2 bg-gray-50 rounded border border-gray-200">
-                                                        <span class="text-xs text-blue-600 block mb-1">Contient du HTML
+                                                        <span class="text-xs text-[#5E0035] block mb-1">Contient du HTML
                                                             - Préservez les balises lors de la traduction</span>
                                                         <div class="font-mono text-xs overflow-x-auto">
                                                             {!! htmlspecialchars($frenchTranslations[$key]) !!}</div>
@@ -264,7 +264,7 @@
 
                                         <!-- Valeur actuelle dans la langue sélectionnée -->
                                         <div
-                                            class="text-sm bg-gray-50 border-l-4 border-indigo-500 pl-3 py-2 rounded mb-2">
+                                            class="text-sm bg-gray-50 border-l-4 border-[#00A7E1] pl-3 py-2 rounded mb-2">
                                             <span class="font-medium text-indigo-700">Valeur actuelle :</span>
                                             @if (isset($translations[$key]) && !empty($translations[$key]))
                                                 @if (strpos($translations[$key], '<') !== false && strpos($translations[$key], '>') !== false)
@@ -284,12 +284,12 @@
                                         @if (isset($frenchTranslations[$key]) &&
                                                 (strlen($frenchTranslations[$key]) > $characterLimit || strpos($frenchTranslations[$key], '<') !== false))
                                             <textarea wire:model="translations.{{ $key }}"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm font-mono"
+                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm font-mono"
                                                 placeholder="Traduction pour {{ $key }}"
                                                 rows="{{ max(ceil(strlen($frenchTranslations[$key]) / 100) + 1, 5) }}" style="min-height: 80px;"></textarea>
                                         @else
                                             <input type="text" wire:model="translations.{{ $key }}"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                                                 placeholder="Traduction pour {{ $key }}">
                                         @endif
                                     </div>
@@ -308,7 +308,7 @@
                         <div class="mt-6 text-right">
                             <button wire:click="saveTranslations" wire:loading.attr="disabled"
                                 wire:target="saveTranslations" :disabled="@js($isSaving)"
-                                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300 disabled:cursor-not-allowed">
+                                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white bg-[#00A7E1] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A7E1] disabled:bg-indigo-300 disabled:cursor-not-allowed">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" wire:loading.class="hidden"
                                     wire:target="saveTranslations">

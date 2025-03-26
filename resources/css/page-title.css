@@ -14,6 +14,22 @@
   margin-top: 0; /* Supprime toute marge en haut */
 }
 
+/* Superposition sombre pour assombrir l'image de fond */
+.page-title::before {
+  content: '';
+  position: absolute;
+  inset: 0; /* Couvre tout le conteneur */
+  background-color: rgba(0, 0, 0, 0.6); /* Couleur noire avec 60% d'opacité */
+  z-index: 1; /* Placé au-dessus de l'image de fond */
+  pointer-events: none; /* Permet de ne pas bloquer les interactions */
+}
+
+/* Contenu principal */
+.page-title .container {
+  position: relative;
+  z-index: 2; /* Place le contenu au-dessus de la superposition */
+}
+
 /* Ajustements pour mobile */
 @media (max-width: 768px) {
   .page-title {

@@ -59,7 +59,7 @@
                 <div>
                     <button wire:click="toggleForm" 
                             wire:loading.attr="disabled"
-                            class="px-4 py-2 rounded-md shadow-sm flex items-center transition-colors duration-150 border {{ $showForm ? 'bg-gray-300 text-gray-600 cursor-not-allowed border-gray-300' : 'bg-white text-blue-600 hover:bg-blue-50 border-blue-300' }}"
+                            class="px-4 py-2 rounded-md shadow-sm flex items-center transition-colors duration-150 border {{ $showForm ? 'bg-gray-300 text-gray-600 cursor-not-allowed border-gray-300' : 'bg-white text-[#5E0035] hover:bg-blue-50 border-[#5E0035]' }}"
                             {{ $showForm ? 'disabled' : '' }}>
                         @if(!$showForm)
                             <span wire:loading.remove wire:target="toggleForm" class="flex items-center">
@@ -96,13 +96,13 @@
             <div class="mb-4 border-b border-gray-200">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
                     <li class="mr-2">
-                        <button @click="activeTab = 'shipment'" :class="{'text-blue-600 border-blue-600': activeTab === 'shipment', 'text-gray-500 hover:text-gray-600 border-transparent': activeTab !== 'shipment'}"
+                        <button @click="activeTab = 'shipment'" :class="{'text-[#5E0035] border-[#00A7E1]': activeTab === 'shipment', 'text-gray-500 hover:text-gray-600 border-transparent': activeTab !== 'shipment'}"
                             class="inline-block p-4 border-b-2 rounded-t-lg">
                             Informations d'expédition
                         </button>
                     </li>
                     <li class="mr-2">
-                        <button @click="activeTab = 'payment'" :class="{'text-blue-600 border-blue-600': activeTab === 'payment', 'text-gray-500 hover:text-gray-600 border-transparent': activeTab !== 'payment'}"
+                        <button @click="activeTab = 'payment'" :class="{'text-[#5E0035] border-[#00A7E1]': activeTab === 'payment', 'text-gray-500 hover:text-gray-600 border-transparent': activeTab !== 'payment'}"
                             class="inline-block p-4 border-b-2 rounded-t-lg">
                             Informations de paiement
                         </button>
@@ -117,7 +117,7 @@
                         <div>
                             <label for="tracking_number" class="block text-sm font-medium text-gray-700 mb-1">Numéro de suivi</label>
                             <input type="text" id="tracking_number" wire:model="tracking_number"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="TRK12345678">
                             @error('tracking_number') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -125,7 +125,7 @@
                         <div>
                             <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Statut</label>
                             <select id="status" wire:model="status"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 <option value="processing">En traitement</option>
                                 <option value="in_transit">En transit</option>
                                 <option value="out_for_delivery">En cours de livraison</option>
@@ -141,7 +141,7 @@
                         <div>
                             <label for="origin" class="block text-sm font-medium text-gray-700 mb-1">Origine</label>
                             <input type="text" id="origin" wire:model="origin"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="Paris, France">
                             @error('origin') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -149,7 +149,7 @@
                         <div>
                             <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
                             <input type="text" id="destination" wire:model="destination"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="New York, USA">
                             @error('destination') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -159,7 +159,7 @@
                         <div>
                             <label for="current_location" class="block text-sm font-medium text-gray-700 mb-1">Localisation actuelle</label>
                             <input type="text" id="current_location" wire:model="current_location"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="Madrid, Espagne">
                             @error('current_location') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -167,7 +167,7 @@
                         <div>
                             <label for="departure_date" class="block text-sm font-medium text-gray-700 mb-1">Date de départ</label>
                             <input type="date" id="departure_date" wire:model="departure_date"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             @error('departure_date') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                         <div>
                             <label for="estimated_arrival_date" class="block text-sm font-medium text-gray-700 mb-1">Date d'arrivée estimée</label>
                             <input type="date" id="estimated_arrival_date" wire:model="estimated_arrival_date"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             @error('estimated_arrival_date') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                         <div>
                             <label for="sender_name" class="block text-sm font-medium text-gray-700 mb-1">Expéditeur</label>
                             <input type="text" id="sender_name" wire:model="sender_name"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="Nom de l'expéditeur">
                             @error('sender_name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -193,7 +193,7 @@
                         <div>
                             <label for="locale" class="block text-sm font-medium text-gray-700 mb-1">Langue du client</label>
                             <select id="locale" wire:model="locale" 
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 @foreach($availableLocales as $code => $name)
                                     <option value="{{ $code }}">{{ $name }}</option>
                                 @endforeach
@@ -207,7 +207,7 @@
                             <!-- Recipient Name -->
                             <label for="recipient_name" class="block text-sm font-medium text-gray-700 mb-1">Nom du destinataire</label>
                             <input type="text" wire:model="recipient_name" id="recipient_name" 
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="Nom du destinataire">
                             @error('recipient_name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -216,7 +216,7 @@
                             <!-- Recipient Email -->
                             <label for="recipient_email" class="block text-sm font-medium text-gray-700 mb-1">Email du destinataire</label>
                             <input type="email" wire:model="recipient_email" id="recipient_email" 
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="email@exemple.com">
                             @error('recipient_email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -224,7 +224,7 @@
                         <div class="mb-4">
                             <label for="additional_info" class="block text-sm font-medium text-gray-700 mb-1">Informations complémentaires</label>
                             <textarea id="additional_info" wire:model="additional_info" rows="4"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="Adresse du destinataire, téléphone, instructions spéciales..."></textarea>
                             <p class="mt-1 text-xs text-gray-500">
                                 Vous pouvez utiliser du texte formaté: <br>
@@ -244,7 +244,7 @@
                         <div>
                             <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Montant</label>
                             <input type="number" step="0.01" id="amount" wire:model="amount"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 placeholder="100.00">
                             @error('amount') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
@@ -252,7 +252,7 @@
                         <div>
                             <label for="currency_id" class="block text-sm font-medium text-gray-700 mb-1">Devise</label>
                             <select id="currency_id" wire:model="currency_id"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 <option value="">Sélectionner une devise</option>
                                 @foreach($currencies as $currency)
                                     <option value="{{ $currency->id }}">{{ $currency->code }} ({{ $currency->symbol }})</option>
@@ -266,7 +266,7 @@
                         <div>
                             <label for="percentage" class="block text-sm font-medium text-gray-700 mb-1">Pourcentage</label>
                             <select id="percentage" wire:model="percentage"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 @foreach($percentageOptions as $option)
                                     <option value="{{ $option }}">{{ $option }}%</option>
                                 @endforeach
@@ -277,7 +277,7 @@
                         <div>
                             <label for="payment_method" class="block text-sm font-medium text-gray-700 mb-1">Méthode de paiement</label>
                             <select id="payment_method" wire:model="payment_method"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 <option value="">Sélectionner une méthode</option>
                                 @foreach($paymentMethods as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
@@ -291,7 +291,7 @@
                         <div>
                             <label for="payment_status" class="block text-sm font-medium text-gray-700 mb-1">Statut du paiement</label>
                             <select id="payment_status" wire:model="payment_status"
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                                 <option value="pending">En attente</option>
                                 <option value="paid">Payé</option>
                                 <option value="failed">Échoué</option>
@@ -303,7 +303,7 @@
                     <div class="mb-4">
                         <label for="instructions" class="block text-sm font-medium text-gray-700 mb-1">Instructions de paiement</label>
                         <textarea id="instructions" wire:model="instructions" rows="3"
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E0035] focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             placeholder="Instructions spécifiques pour le paiement..."></textarea>
                         <p class="mt-1 text-xs text-gray-500">
                             Vous pouvez utiliser du texte formaté: <br>
@@ -454,7 +454,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                                 @if($isEditing && $shipmentId == $shipment->id)
-                                    <span class="text-blue-600 font-medium">
+                                    <span class="text-[#5E0035] font-medium">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline-block">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                         </svg>
@@ -463,7 +463,7 @@
                                 @else
                                     <!-- Dans la section des actions du tableau -->
                                     <td class="px-6 py-4 text-right text-sm font-medium whitespace-nowrap">
-                                        <button wire:click="editShipment({{ $shipment->id }})" class="text-blue-600 hover:text-blue-900 mr-3">
+                                        <button wire:click="editShipment({{ $shipment->id }})" class="text-[#5E0035] hover:text-blue-900 mr-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>

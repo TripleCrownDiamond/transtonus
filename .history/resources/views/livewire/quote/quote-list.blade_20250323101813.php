@@ -56,7 +56,7 @@
                                 <select 
                                     wire:change="updateStatus({{ $quote->id }}, $event.target.value)"
                                     wire:loading.attr="disabled"
-                                    class="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
+                                    class="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1]
                                         {{ $quote->status === 'pending' ? 'bg-yellow-50 text-yellow-800' : 
                                            ($quote->status === 'in_progress' ? 'bg-blue-50 text-blue-800' : 
                                            'bg-green-50 text-green-800') }}">

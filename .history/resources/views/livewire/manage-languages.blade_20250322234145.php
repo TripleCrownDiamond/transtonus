@@ -9,7 +9,7 @@
     @endif
 
     <!-- Section d'en-tête -->
-    <div class="p-4 lg:p-6 bg-gradient-to-r from-blue-600 to-indigo-700 border-b border-gray-200 rounded-t-lg">
+    <div class="p-4 lg:p-6 bg-gradient-to-r from-[#00A7E1] to-[#00A7E1] border-b border-gray-200 rounded-t-lg">
         <h1 class="text-xl font-bold text-white flex items-center">
             <!-- Icône SVG représentant des langues/traductions -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -28,10 +28,10 @@
                 langue</label>
             <div class="flex">
                 <input type="text" wire:model="newLanguage" id="newLanguage"
-                    class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                     placeholder="Code de langue (ex: en, es, de)">
                 <button wire:click="addLanguage"
-                    class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white bg-[#00A7E1] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A7E1]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -47,7 +47,7 @@
                 langue</label>
             <select wire:model.live="selectedLanguage" wire:change="loadTranslations($event.target.value)"
                 id="selectedLanguage"
-                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                 @foreach ($languages as $language)
                     <option value="{{ $language }}">{{ $language }}</option>
                 @endforeach
@@ -71,7 +71,7 @@
                     <label for="searchFilter" class="block text-sm font-medium text-gray-700 mb-1">Rechercher une clé ou valeur</label>
                     <div class="flex">
                         <input type="text" wire:model.live="searchFilter" id="searchFilter"
-                            class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            class="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                             placeholder="Filtrer par clé ou valeur de traduction...">
                         <button wire:click="resetFilter"
                             class="inline-flex items-center px-4 py-2 border border-transparent rounded-r-md font-semibold text-white {{ empty($searchFilter) ? 'bg-gray-300 cursor-not-allowed' : 'bg-gray-700 hover:bg-gray-800' }} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
@@ -104,7 +104,7 @@
                                 <!-- Champ de saisie de traduction en dessous -->
                                 <div>
                                     <input type="text" wire:model="translations.{{ $key }}"
-                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                                         placeholder="Traduction pour {{ $key }}">
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                 <!-- Bouton de sauvegarde -->
                 <div class="mt-6 text-right">
                     <button wire:click="saveTranslations" wire:loading.attr="disabled"
-                        class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300"
+                        class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-white bg-[#00A7E1] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A7E1] disabled:bg-indigo-300"
                         :disabled="isSaving">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">

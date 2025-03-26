@@ -53,7 +53,7 @@
         </div>
 
         <!-- Section d'en-tête -->
-        <div class="p-4 lg:p-6 bg-gradient-to-r from-blue-600 to-indigo-700 border-b border-gray-200 rounded-t-lg">
+        <div class="p-4 lg:p-6 bg-gradient-to-r from-[#00A7E1] to-[#00A7E1] border-b border-gray-200 rounded-t-lg">
             <h1 class="text-xl font-bold text-white flex items-center">
                 <!-- Icône SVG représentant des devis -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -72,7 +72,7 @@
                 <div>
                     <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Rechercher</label>
                     <input type="text" wire:model.live.debounce.300ms="search" id="search"
-                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"
                         placeholder="Nom, email, entreprise...">
                 </div>
 
@@ -80,7 +80,7 @@
                 <div>
                     <label for="statusFilter" class="block text-sm font-medium text-gray-700 mb-1">Filtrer par statut</label>
                     <select wire:model.live="statusFilter" id="statusFilter"
-                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                         <option value="">Tous les statuts</option>
                         <option value="pending">En attente</option>
                         <option value="in_progress">En cours</option>
@@ -93,15 +93,15 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1">Tri</label>
                     <div class="flex space-x-2">
                         <button wire:click="sortBy('created_at')" 
-                            class="px-3 py-2 text-sm font-medium rounded-md {{ $sortField === 'created_at' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50' }}">
+                            class="px-3 py-2 text-sm font-medium rounded-md {{ $sortField === 'created_at' ? 'bg-[#00A7E1] text-white' : 'bg-white text-gray-700 hover:bg-gray-50' }}">
                             Date {{ $sortField === 'created_at' ? ($sortDirection === 'asc' ? '↑' : '↓') : '' }}
                         </button>
                         <button wire:click="sortBy('name')" 
-                            class="px-3 py-2 text-sm font-medium rounded-md {{ $sortField === 'name' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50' }}">
+                            class="px-3 py-2 text-sm font-medium rounded-md {{ $sortField === 'name' ? 'bg-[#00A7E1] text-white' : 'bg-white text-gray-700 hover:bg-gray-50' }}">
                             Nom {{ $sortField === 'name' ? ($sortDirection === 'asc' ? '↑' : '↓') : '' }}
                         </button>
                         <button wire:click="sortBy('status')" 
-                            class="px-3 py-2 text-sm font-medium rounded-md {{ $sortField === 'status' ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50' }}">
+                            class="px-3 py-2 text-sm font-medium rounded-md {{ $sortField === 'status' ? 'bg-[#00A7E1] text-white' : 'bg-white text-gray-700 hover:bg-gray-50' }}">
                             Statut {{ $sortField === 'status' ? ($sortDirection === 'asc' ? '↑' : '↓') : '' }}
                         </button>
                     </div>
@@ -166,7 +166,7 @@
                                         <select 
                                             wire:change="updateStatus({{ $quote->id }}, $event.target.value)"
                                             wire:loading.attr="disabled"
-                                            class="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
+                                            class="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1]
                                                 {{ $quote->status === 'pending' ? 'bg-yellow-50 text-yellow-800' : 
                                                    ($quote->status === 'in_progress' ? 'bg-blue-50 text-blue-800' : 
                                                    'bg-green-50 text-green-800') }}">
@@ -311,14 +311,14 @@
                                         <div class="mb-4">
                                             <label for="emailSubject" class="block text-sm font-medium text-gray-700">Sujet</label>
                                             <input type="text" wire:model="emailSubject" id="emailSubject"
-                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm">
                                             @error('emailSubject') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                         </div>
                                         
                                         <div class="mb-4">
                                             <label for="emailContent" class="block text-sm font-medium text-gray-700">Contenu</label>
                                             <div wire:ignore>
-                                                <textarea id="emailContent" wire:model="emailContent" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                                                <textarea id="emailContent" wire:model="emailContent" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#00A7E1] focus:ring-[#00A7E1] sm:text-sm"></textarea>
                                             </div>
                                             @error('emailContent') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                         </div>

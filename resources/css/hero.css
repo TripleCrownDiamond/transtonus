@@ -6,7 +6,7 @@
   min-height: 50vh;
   position: relative;
   padding: 120px 0 60px 0;
-  background-color: var(--heading-color); /* Fond en couleur foncée (#001973) */
+  background-color: var(--heading-color); /* Fond en couleur foncée (#5E0035) */
   color: #ffffff; /* Texte en blanc */
   overflow: hidden; /* Cache les débordements pour les animations */
 }
@@ -22,9 +22,19 @@
   animation: zoomIn 10s ease-in-out infinite alternate; /* Animation de zoom pour l'arrière-plan */
 }
 
+/* Ajout d'une superposition sombre */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Assombrit l'image (0.5 = 50% d'opacité) */
+  z-index: 2; /* Placé au-dessus de l'image, mais en dessous du contenu */
+  pointer-events: none; /* Permet de ne pas bloquer les interactions */
+}
+
 .hero .container {
   position: relative;
-  z-index: 3;
+  z-index: 3; /* Place le contenu au-dessus de la superposition */
 }
 
 .hero h2 {
